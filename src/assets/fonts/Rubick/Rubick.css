@@ -1,0 +1,6 @@
+@font-face {
+  font-family: "Rubick";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Rubick"), url("./RubikWetPaint-Regular.ttf") format("truetype");
+}

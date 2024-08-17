@@ -1,5 +1,5 @@
+import styles from "./Header.module.scss";
+
 export const Header = () => {
-    return <>
-    
-    </>;
+  return <header className={styles.header}>agagagag</header>;
 };

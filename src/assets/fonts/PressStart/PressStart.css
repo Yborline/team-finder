@@ -1,0 +1,6 @@
+@font-face {
+  font-family: "Games";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Games"), url("./PressStart2P-Regular.ttf") format("truetype");
+}
