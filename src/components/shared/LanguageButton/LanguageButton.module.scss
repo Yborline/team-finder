@@ -1,0 +1,42 @@
+.languages {
+    width: max-content;
+    height: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &_toggle {
+
+        width: max-content;
+        transition: 0.3s;
+        z-index: 8;
+        display: flex;
+        gap: 4px;
+        cursor: pointer;
+
+        &.active {
+            visibility: visible;
+            transform: translateY(0px);
+        }
+    }
+
+    &_menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+    }
+
+    &_flags {
+        width: 33px;
+        height: 17px;
+        transition: 0.3s;
+        outline: 2px solid transparent;
+        border-radius: 2px;
+
+        &:hover {
+            outline: 2px solid var(--lightcherry);
+        }
+    }
+}

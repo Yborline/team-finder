@@ -1,0 +1,10 @@
+{
+    "header": {
+        "login": "Login",
+        "signUp": "Sign up"
+    },
+    "home": {},
+    "auth": {},
+    "listTeam": {},
+    "createPost": {}
+}

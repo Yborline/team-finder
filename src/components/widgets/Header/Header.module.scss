@@ -3,4 +3,50 @@
     width: 100vw;
     height: 116px;
     background: linear-gradient(90deg, #350808 19.5%, #000000 51%, #2E0D26 76%);
+    position: relative;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .mainBox {
+        width: 100%;
+        max-width: 1550px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .boxLeft {
+            display: flex;
+            align-items: center;
+
+            .linkLogo {
+                margin-right: 10px;
+            }
+        }
+
+        .boxRight {
+            display: flex;
+
+            .auth {
+                background-color: var(--buttonAuth);
+                transform: skewX(-15deg);
+                transition: background-color 0.3s ease;
+
+                &:last-of-type {
+                    margin-left: 5px;
+                    transform: skewX(-15deg);
+                }
+
+                &:hover {
+                    background-color: var(--buttonAuthHover)
+                }
+            }
+
+        }
+    }
+
+
+
+
 }

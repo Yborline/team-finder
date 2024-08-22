@@ -1,0 +1,10 @@
+{
+    "header": {
+        "login": "Увійти",
+        "signUp": "Зареєструватися"
+    },
+    "home": {},
+    "auth": {},
+    "listTeam": {},
+    "createPost": {}
+}
