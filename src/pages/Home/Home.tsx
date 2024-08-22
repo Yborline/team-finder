@@ -16,7 +16,6 @@ import Wukong3k from "@assets/img/home/rightView/rightPersons/wukong/Wukong3k.pn
 export const Home = () => {
   return (
     <div className={styles.mainHome}>
-      <img className={styles.line} src={line} alt="line" />
       <div onClick={() => {}} className={styles.leftView}>
         <img
           src={meepoMob}
@@ -25,10 +24,12 @@ export const Home = () => {
               ${meepo} 1920w,
               ${meepo3k} 4000w,
           `}
-          sizes="100vw"
           className={styles.meepo}
           alt="meepo"
         />
+        <p className={`${styles.textLeft} ${styles.textSelect}`}>
+          Пошук команди
+        </p>
         <img
           src={gtaMob}
           srcSet={`
@@ -36,12 +37,12 @@ export const Home = () => {
               ${gta} 1920w,
               ${gta3k} 4000w,
           `}
-          sizes="100vw"
           className={styles.gta}
           alt="gta"
         />
         {/* <img className={styles.gta} alt="gta" /> */}
       </div>
+      <img className={styles.line} src={line} alt="line" />
       <div onClick={() => {}} className={styles.rightView}>
         <img
           src={stalkerMob}
@@ -50,10 +51,12 @@ export const Home = () => {
               ${stalker} 1920w,
               ${stalker3k} 4000w,
           `}
-          sizes="100vw"
           className={styles.stalker}
           alt="stalker"
         />
+        <p className={`${styles.textRight} ${styles.textSelect}`}>
+          Створити пост
+        </p>
         <img
           src={WukongMob}
           srcSet={`
@@ -61,8 +64,7 @@ export const Home = () => {
               ${Wukong} 1920w,
               ${Wukong3k} 4000w,
           `}
-          sizes="100vw"
-          className={styles.stalker}
+          className={styles.wukongMob}
           alt="Wukong"
         />
       </div>
