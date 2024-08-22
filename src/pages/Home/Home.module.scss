@@ -109,13 +109,22 @@
         flex-direction: row;
 
         .line {
-            height: 110%;
-            transform: translate(0%, -50%)
+            height: 120%;
+            transform: translate(-50%, -5%);
+            left: 50%;
+            top: auto;
+
         }
 
         .leftView,
         .rightView {
             height: inherit;
+
+            .textSelect {
+                font-size: 30px;
+                width: 190px;
+
+            }
         }
 
         .leftView {
@@ -128,30 +137,55 @@
             .meepo,
             .gta {
                 position: absolute;
+                object-fit: contain;
             }
 
             .gta {
-                position: absolute;
-                width: 250px;
-                height: 230px;
+                width: 240px;
+                height: 220px;
                 object-fit: contain;
-                bottom: 0px;
-                left: 50%;
-                transform: translate(-50%, 0%);
+                bottom: -10px;
+                left: 0%;
+                transform: translate(0%, 0%);
+            }
+
+            .meepo {
+                width: 290px;
+                height: 200px;
+                top: -30px;
+                transform: translate(0%, -0%) rotate(185deg);
             }
 
             .textLeft {
-                position: absolute;
-                z-index: 10;
-                top: 15%;
-                left: 50%;
-                transform: translate(-50%, 0%);
+                text-align: left;
+                top: auto;
+
+
             }
 
         }
 
         .rightView {
             background-image: url('@assets/img/home/rightView/rightView.png');
+
+            .stalker {
+                width: 230px;
+                height: 186px;
+                bottom: 0%;
+                right: -10%;
+                left: auto;
+            }
+
+            .wukongMob {
+                width: 220px;
+                height: 176px;
+                top: 10%;
+                right: -10%;
+            }
+
+            .textRight {
+                text-align: right;
+            }
         }
     }
 }
