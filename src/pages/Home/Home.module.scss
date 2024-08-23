@@ -308,18 +308,53 @@
     }
 }
 
-@media screen and (min-width:1920px) {
+
+@media screen and (min-width: 1920px) {
     .mainHome {
+        .line {
+            width: 700px;
+        }
+
+        .leftView,
+        .rightView {
+            .textSelect {
+                font-size: 45px;
+            }
+        }
+
         .leftView {
-            background-image: url('@assets/img/home/leftView/leftView3k.png');
+            background-image: url('@assets/img/home/leftView/leftView.png');
+
+            .gta {
+                width: 470px;
+                height: 470px;
+                bottom: -40px;
+            }
+
+            .meepo {
+                width: 500px;
+                height: 400px;
+                top: -40px
+            }
+
+
 
         }
 
         .rightView {
-            background-image: url('@assets/img/home/rightView/rightView3k.png');
+            background-image: url('@assets/img/home/rightView/rightView.png');
+
+            .stalker {
+                width: 450px;
+                height: 406px;
+                left: 15%;
+            }
+
+            .wukongMob {
+                width: 420px;
+                height: 406px;
+            }
 
         }
-
     }
-
 }
