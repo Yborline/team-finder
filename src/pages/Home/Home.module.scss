@@ -32,6 +32,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            background-size: cover;
+            background-position: center;
 
             .textSelect {
                 font-size: 30px;
@@ -131,6 +133,8 @@
         .leftView,
         .rightView {
             height: inherit;
+            background-size: cover;
+            background-position: center;
 
             .textSelect {
                 font-size: 30px;
@@ -165,7 +169,7 @@
                 width: 290px;
                 height: 200px;
                 top: -30px;
-                transform: translate(0%, -0%) rotate(185deg);
+                transform: translate(0%, -0%) rotate(180deg);
             }
 
             .textLeft {
@@ -208,6 +212,8 @@
 
         .leftView,
         .rightView {
+
+
             .textSelect {
                 font-size: 35px;
                 width: max-content;
