@@ -211,7 +211,7 @@
             .textSelect {
                 font-size: 35px;
                 width: max-content;
-
+                text-align: center;
             }
         }
 
@@ -230,10 +230,7 @@
                 height: 270px;
             }
 
-            .textLeft {
-                text-align: left;
-                top: auto;
-            }
+
 
         }
 
@@ -253,9 +250,60 @@
                 right: -10%;
             }
 
-            .textRight {
-                text-align: right;
+        }
+    }
+}
+
+
+@media screen and (min-width: 1024px) {
+    .mainHome {
+        .line {
+            width: 700px;
+        }
+
+        .leftView,
+        .rightView {
+            .textSelect {
+                font-size: 45px;
             }
+        }
+
+        .leftView {
+            background-image: url('@assets/img/home/leftView/leftView.png');
+
+            .gta {
+                width: 390px;
+                height: 390px;
+                left: 50%;
+                bottom: -30px;
+                transform: translate(-50%, 0%);
+            }
+
+            .meepo {
+                width: 410px;
+                height: 320px;
+            }
+
+
+
+        }
+
+        .rightView {
+            background-image: url('@assets/img/home/rightView/rightView.png');
+
+            .stalker {
+                width: 390px;
+                height: 346px;
+                left: 15%;
+            }
+
+            .wukongMob {
+                width: 340px;
+                height: 326px;
+                top: 0%;
+                right: 0%;
+            }
+
         }
     }
 }
