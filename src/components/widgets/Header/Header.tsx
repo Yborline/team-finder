@@ -34,7 +34,7 @@ export const Header = () => {
 
       {toggleModal && (
         <Modal close={handleCloseModal}>
-          <div>ahahaha</div>
+          <div className="boxRegister">ahahaha</div>
         </Modal>
       )}
     </header>
