@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import LanguageButton from "@components/shared/LanguageButton/LanguageButton";
 import { useState } from "react";
 import Modal from "@components/shared/Modal/Modal";
+import Register from "../Form/Register/Register";
 // import ThemeToggle from "@components/shared/ThemeToggle/ThemeToggle";
 
 export const Header = () => {
@@ -34,7 +35,7 @@ export const Header = () => {
 
       {toggleModal && (
         <Modal close={handleCloseModal}>
-          <div className="boxRegister">ahahaha</div>
+          <Register close={handleCloseModal} />
         </Modal>
       )}
     </header>
