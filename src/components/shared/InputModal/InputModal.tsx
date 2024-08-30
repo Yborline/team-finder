@@ -1,24 +1,32 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import styles from "./InputModal.module.scss";
+import { UseFormRegisterReturn } from "react-hook-form";
+
+type inputType = "string" | "number" | "password";
 
 interface IPropsInputModal {
-  changeInput: () => void;
-  value: string;
+  hookForm: UseFormRegisterReturn;
+  // changeInput: () => void;
+  // value: string;
   text: string;
+  type?: inputType;
 }
 
 export const InputModal: FC<IPropsInputModal> = ({
-  changeInput,
-  value,
+  hookForm,
+
   text,
+  type = "string",
 }) => {
   return (
     <input
+      {...hookForm}
       className={styles.inputMain}
       placeholder={text}
-      value={value}
-      onInput={changeInput}
-    ></input>
+      // value={value}
+      // onInput={changeInput}
+      type={type}
+    />
   );
 };
 

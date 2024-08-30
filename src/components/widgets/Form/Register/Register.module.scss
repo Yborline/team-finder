@@ -11,13 +11,47 @@
     align-items: center;
     justify-content: center;
 
+
 }
+
+.boxInputs {
+    width: 100%;
+    height: max-content;
+    // transition: height 0.3s ease;
+}
+
+.errorP {
+    color: red;
+    opacity: 0;
+    display: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+}
+
+.errorP.show {
+
+    opacity: 1;
+    max-height: 100px;
+    /* Максимальна висота тексту */
+}
+
+
+
 
 
 .btnRegister {
-    color: var(--blood);
-    margin-top: 20px
+    background: transparent;
+    border: 1px solid var(--white);
+    margin-top: 20px;
+    color: var(--white);
+
+    &:hover {
+        background: var(--white);
+        color: var(--blood);
+    }
 }
+
 
 .closeIcon {
     position: absolute;
@@ -30,4 +64,9 @@
     &:hover {
         fill: var(--blood);
     }
+}
+
+.boxPassword {
+    margin-top: 15px;
+    width: 100%;
 }
