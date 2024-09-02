@@ -54,7 +54,7 @@ const Register: FC<IPropsRegister> = ({ close }) => {
           <p role="alert">First name is required</p>
         )}
         <div className={styles.boxPassword}>
-          <PasswordInput
+          <InputModal
             hookForm={register("password", { required: true, maxLength: 20 })}
             text="Пароль"
             type="password"
@@ -63,7 +63,7 @@ const Register: FC<IPropsRegister> = ({ close }) => {
           {errors.password?.type === "required" && (
             <p role="alert">First name is required</p>
           )}
-          <PasswordInput
+          <InputModal
             hookForm={register("repeatPassword", {
               required: true,
               maxLength: 20,
