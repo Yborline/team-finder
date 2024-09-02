@@ -17,26 +17,16 @@
 .boxInputs {
     width: 100%;
     height: max-content;
-    // transition: height 0.3s ease;
+    transition: height 1s ease, max-height 1s ease;
 }
+
 
 .errorP {
     color: red;
-    opacity: 0;
-    display: none;
-    max-height: 0;
     overflow: hidden;
-    transition: opacity 0.3s ease, max-height 0.3s ease;
-}
-
-.errorP.show {
-
-    opacity: 1;
     max-height: 100px;
-    /* Максимальна висота тексту */
+    transition: max-height 0.3s ease, opacity 0.3s ease;
 }
-
-
 
 
 
@@ -69,4 +59,20 @@
 .boxPassword {
     margin-top: 15px;
     width: 100%;
+}
+
+@keyframes showError {
+    0% {
+        height: 0%;
+        opacity: 0;
+
+    }
+
+
+
+    100% {
+        height: 20px;
+        opacity: 1
+    }
+
 }

@@ -1,10 +1,13 @@
 import React, { FC } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import styles from "./Register.module.scss";
 import InputModal from "@components/shared/InputModal/InputModal";
 import { IoCloseSharp } from "react-icons/io5";
 import { IconContext } from "react-icons";
 import { useForm, SubmitHandler } from "react-hook-form";
-import PasswordInput from "@components/shared/InputModal/PasswordInput/PasswordInput";
+import schemaRegister from "@validations/register";
+import { yupResolver } from "@hookform/resolvers/yup";
+import ErrorText from "@components/shared/ErrorText/ErrorText";
 
 interface IPropsRegister {
   close: () => void;
@@ -22,7 +25,9 @@ const Register: FC<IPropsRegister> = ({ close }) => {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm<IFormInput>();
+  } = useForm<IFormInput>({
+    resolver: yupResolver(schemaRegister),
+  });
   const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
 
   return (
@@ -36,33 +41,26 @@ const Register: FC<IPropsRegister> = ({ close }) => {
           text="Нікнейм"
           aria-invalid={errors.name ? "true" : "false"}
         />
-        <p
-          className={`${styles.errorP} ${
-            errors.name?.type === "required" ? styles.show : ""
-          }`}
-          role="alert"
-        >
-          First name is required
-        </p>
+
+        <ErrorText error={errors.name} />
 
         <InputModal
           hookForm={register("email", { required: true, maxLength: 20 })}
           text="Електронна адреса"
           aria-invalid={errors.name ? "true" : "false"}
         />
-        {errors.email?.type === "required" && (
-          <p role="alert">First name is required</p>
-        )}
+        <ErrorText error={errors.email} />
+        {/* {errors.email && <p role="alert">{errors.email?.message}</p>} */}
         <div className={styles.boxPassword}>
           <InputModal
             hookForm={register("password", { required: true, maxLength: 20 })}
             text="Пароль"
             type="password"
             aria-invalid={errors.password ? "true" : "false"}
+            repeatPassword={true}
           />
-          {errors.password?.type === "required" && (
-            <p role="alert">First name is required</p>
-          )}
+          <ErrorText error={errors.password} />
+          {/* {errors.password && <p role="alert">{errors.password?.message}</p>} */}
           <InputModal
             hookForm={register("repeatPassword", {
               required: true,
@@ -71,10 +69,9 @@ const Register: FC<IPropsRegister> = ({ close }) => {
             text="Підтвердження паролю"
             type="password"
             aria-invalid={errors.repeatPassword ? "true" : "false"}
+            repeatPassword={true}
           />
-          {errors.repeatPassword?.type === "required" && (
-            <p role="alert">First name is required</p>
-          )}
+          <ErrorText error={errors.repeatPassword} />
         </div>
       </div>
       <button type="submit" className={styles.btnRegister}>
