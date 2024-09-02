@@ -11,11 +11,12 @@ interface IPropsInputModal {
   // value: string;
   text: string;
   type?: inputType;
+  repeatPassword?: boolean;
 }
 
 export const InputModal: FC<IPropsInputModal> = ({
   hookForm,
-
+  repeatPassword,
   text,
   type = "string",
 }) => {
@@ -42,6 +43,7 @@ export const InputModal: FC<IPropsInputModal> = ({
         // value={value}
         // onInput={changeInput}
         type={getTypeInput()}
+        autoComplete={repeatPassword ? "new-password" : "on"}
       />
       {type === "password" && (
         <VisiblePassword
