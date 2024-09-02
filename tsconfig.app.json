@@ -26,7 +26,8 @@
     "@data/*": ["data/*"],
     "@hooks/*": ["hooks/*"],
     "@pages/*": ["pages/*"],
-    "@interfaces/*":["interfaces"]
+    "@interfaces/*":["interfaces"],
+    "@validations/*":["validations"]
     
     }
   },
