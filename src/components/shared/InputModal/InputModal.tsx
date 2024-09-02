@@ -7,8 +7,6 @@ type inputType = "text" | "number" | "password";
 
 interface IPropsInputModal {
   hookForm: UseFormRegisterReturn;
-  // changeInput: () => void;
-  // value: string;
   text: string;
   type?: inputType;
   repeatPassword?: boolean;
@@ -40,8 +38,6 @@ export const InputModal: FC<IPropsInputModal> = ({
         {...hookForm}
         className={styles.inputMain}
         placeholder={text}
-        // value={value}
-        // onInput={changeInput}
         type={getTypeInput()}
         autoComplete={repeatPassword ? "new-password" : "on"}
       />

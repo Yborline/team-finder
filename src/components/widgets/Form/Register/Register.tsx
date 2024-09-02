@@ -1,5 +1,4 @@
-import React, { FC } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { FC } from "react";
 import styles from "./Register.module.scss";
 import InputModal from "@components/shared/InputModal/InputModal";
 import { IoCloseSharp } from "react-icons/io5";
@@ -23,7 +22,6 @@ const Register: FC<IPropsRegister> = ({ close }) => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<IFormInput>({
     resolver: yupResolver(schemaRegister),
@@ -51,28 +49,26 @@ const Register: FC<IPropsRegister> = ({ close }) => {
         />
         <ErrorText error={errors.email} />
         {/* {errors.email && <p role="alert">{errors.email?.message}</p>} */}
-        <div className={styles.boxPassword}>
-          <InputModal
-            hookForm={register("password", { required: true, maxLength: 20 })}
-            text="Пароль"
-            type="password"
-            aria-invalid={errors.password ? "true" : "false"}
-            repeatPassword={true}
-          />
-          <ErrorText error={errors.password} />
-          {/* {errors.password && <p role="alert">{errors.password?.message}</p>} */}
-          <InputModal
-            hookForm={register("repeatPassword", {
-              required: true,
-              maxLength: 20,
-            })}
-            text="Підтвердження паролю"
-            type="password"
-            aria-invalid={errors.repeatPassword ? "true" : "false"}
-            repeatPassword={true}
-          />
-          <ErrorText error={errors.repeatPassword} />
-        </div>
+        <InputModal
+          hookForm={register("password", { required: true, maxLength: 20 })}
+          text="Пароль"
+          type="password"
+          aria-invalid={errors.password ? "true" : "false"}
+          repeatPassword={true}
+        />
+        <ErrorText error={errors.password} />
+        {/* {errors.password && <p role="alert">{errors.password?.message}</p>} */}
+        <InputModal
+          hookForm={register("repeatPassword", {
+            required: true,
+            maxLength: 20,
+          })}
+          text="Підтвердження паролю"
+          type="password"
+          aria-invalid={errors.repeatPassword ? "true" : "false"}
+          repeatPassword={true}
+        />
+        <ErrorText error={errors.repeatPassword} />
       </div>
       <button type="submit" className={styles.btnRegister}>
         Зареєструватися

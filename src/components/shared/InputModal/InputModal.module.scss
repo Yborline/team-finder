@@ -16,7 +16,8 @@
         color: var(--whiteText);
         box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.75);
         margin-bottom: 15px;
-
+        font-family: "Rubick";
+        -webkit-text-stroke: 1px black;
 
         &:hover {
             cursor: pointer;
@@ -34,7 +35,22 @@
 
         &::placeholder {
             font-size: 17px;
-            color: var(--placeholder)
+            color: var(--placeholder);
+            font-family: "Rubick";
+            -webkit-text-stroke: 1px black;
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .inputContainer {
+        .inputMain {
+            height: 40px;
+            font-size: 20px;
+
+            &::placeholder {
+                font-size: 19px;
+            }
         }
     }
 }

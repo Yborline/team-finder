@@ -1,7 +1,7 @@
 .errorP {
-    color: var(--error);
-    text-stroke: 1px var(--whiteText);
-    -webkit-text-stroke: 0.5px var(--whiteText);
+    color: var(--white);
+    text-stroke: 1px var(--strokeError);
+    -webkit-text-stroke: 1px var(--strokeError);
     overflow: hidden;
     max-height: 100px;
     transition: max-height 0.3s ease, opacity 0.3s ease;
