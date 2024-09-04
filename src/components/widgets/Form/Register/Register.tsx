@@ -7,6 +7,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import schemaRegister from "@validations/register";
 import { yupResolver } from "@hookform/resolvers/yup";
 import ErrorText from "@components/shared/ErrorText/ErrorText";
+import ModalBackdropAuth from "@components/shared/Modal/ModalBackdropAuth/ModalBackdropAuth";
 
 interface IPropsRegister {
   close: () => void;
@@ -29,51 +30,50 @@ const Register: FC<IPropsRegister> = ({ close }) => {
   const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={styles.boxRegister}>
-      <IconContext.Provider value={{ className: styles.closeIcon }}>
-        <IoCloseSharp onClick={close} />
-      </IconContext.Provider>
-      <div className={styles.boxInputs}>
-        <InputModal
-          hookForm={register("name", { required: true, maxLength: 20 })}
-          text="Нікнейм"
-          aria-invalid={errors.name ? "true" : "false"}
-        />
+    <ModalBackdropAuth close={close}>
+      <form className={styles.boxRegister} onSubmit={handleSubmit(onSubmit)}>
+        <div className={styles.boxInputs}>
+          <InputModal
+            hookForm={register("name", { required: true, maxLength: 20 })}
+            text="Нікнейм"
+            aria-invalid={errors.name ? "true" : "false"}
+          />
 
-        <ErrorText error={errors.name} />
+          <ErrorText error={errors.name} />
 
-        <InputModal
-          hookForm={register("email", { required: true, maxLength: 20 })}
-          text="Електронна адреса"
-          aria-invalid={errors.name ? "true" : "false"}
-        />
-        <ErrorText error={errors.email} />
-        {/* {errors.email && <p role="alert">{errors.email?.message}</p>} */}
-        <InputModal
-          hookForm={register("password", { required: true, maxLength: 20 })}
-          text="Пароль"
-          type="password"
-          aria-invalid={errors.password ? "true" : "false"}
-          repeatPassword={true}
-        />
-        <ErrorText error={errors.password} />
-        {/* {errors.password && <p role="alert">{errors.password?.message}</p>} */}
-        <InputModal
-          hookForm={register("repeatPassword", {
-            required: true,
-            maxLength: 20,
-          })}
-          text="Підтвердження паролю"
-          type="password"
-          aria-invalid={errors.repeatPassword ? "true" : "false"}
-          repeatPassword={true}
-        />
-        <ErrorText error={errors.repeatPassword} />
-      </div>
-      <button type="submit" className={styles.btnRegister}>
-        Зареєструватися
-      </button>
-    </form>
+          <InputModal
+            hookForm={register("email", { required: true, maxLength: 20 })}
+            text="Електронна адреса"
+            aria-invalid={errors.name ? "true" : "false"}
+          />
+          <ErrorText error={errors.email} />
+          {/* {errors.email && <p role="alert">{errors.email?.message}</p>} */}
+          <InputModal
+            hookForm={register("password", { required: true, maxLength: 20 })}
+            text="Пароль"
+            type="password"
+            aria-invalid={errors.password ? "true" : "false"}
+            repeatPassword={true}
+          />
+          <ErrorText error={errors.password} />
+          {/* {errors.password && <p role="alert">{errors.password?.message}</p>} */}
+          <InputModal
+            hookForm={register("repeatPassword", {
+              required: true,
+              maxLength: 20,
+            })}
+            text="Підтвердження паролю"
+            type="password"
+            aria-invalid={errors.repeatPassword ? "true" : "false"}
+            repeatPassword={true}
+          />
+          <ErrorText error={errors.repeatPassword} />
+        </div>
+        <button type="submit" className={styles.btnRegister}>
+          Зареєструватися
+        </button>
+      </form>
+    </ModalBackdropAuth>
   );
 };
 
