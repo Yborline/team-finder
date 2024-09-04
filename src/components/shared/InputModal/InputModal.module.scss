@@ -39,6 +39,15 @@
             font-family: "Rubick";
             -webkit-text-stroke: 1px black;
         }
+
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill:active {
+            -webkit-background-clip: var(--inputBackground);
+            -webkit-text-fill-color: var(--whiteText);
+            transition: background-color 5000s ease-in-out 0s;
+        }
     }
 }
 
