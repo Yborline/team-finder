@@ -1,0 +1,29 @@
+.buttonOtherAuth {
+
+    font-size: 20px;
+    color: var(--black);
+    background: var(--white);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px;
+    min-width: 180px;
+    transition: all 0.3s ease;
+    height: 40px;
+
+    &:hover {
+        color: var(--white);
+        background: var(--buttonAuth);
+        box-shadow: 0px 0px 16px -3px rgba(0, 0, 0, 0.75);
+    }
+
+}
+
+
+@media screen and (min-width: 480px) {
+    .buttonOtherAuth {
+        height: 45px;
+    }
+
+}
