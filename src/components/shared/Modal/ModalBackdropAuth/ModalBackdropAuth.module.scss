@@ -5,7 +5,7 @@
     height: 100vh;
     background: var(--form);
     position: relative;
-    padding: 40px 20px 20px 20px;
+    padding: 50px 20px 20px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,8 +13,8 @@
 
     .closeIcon {
         position: absolute;
-        right: 30px;
-        top: 30px;
+        right: 20px;
+        top: 10px;
         width: 30px;
         height: 30px;
         fill: var(--white);
@@ -29,9 +29,8 @@
 @media screen and (min-width: 500px) {
 
     .boxAuth {
-
-        max-width: 480px;
-        max-height: 60%;
+        width: auto;
+        height: auto;
         border-radius: 8px;
         box-shadow: 0px 0px 14px 1px rgba(0, 0, 0, 0.75);
 
@@ -42,8 +41,6 @@
 @media screen and (min-width: 500px) and (max-height: 700px) {
     .boxAuth {
 
-        max-width: 480px;
-        max-height: 100%;
         border-radius: 8px;
 
     }
@@ -53,24 +50,9 @@
 @media screen and (min-width: 520px) and (min-height: 700px) and (max-height: 900px) {
     .boxAuth {
 
-        max-width: 480px;
-        max-height: 80%;
         border-radius: 8px;
-
-        .closeIcon {
-            right: 20px;
-            top: 20px;
-
-        }
     }
 }
 
 
-@media screen and (min-width: 1080px) {
-
-    .closeIcon {
-        right: 20px;
-        top: 20px;
-
-    }
-}
+@media screen and (min-width: 1080px) {}
