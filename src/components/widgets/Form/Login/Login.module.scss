@@ -1,0 +1,50 @@
+    .boxLogin {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+
+        .boxInputs {
+            width: 100%;
+            height: max-content;
+            transition: height 1s ease, max-height 1s ease;
+
+        }
+
+        .boxAuthOther {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            height: 100px;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+    }
+
+    @media screen and (min-width: 480px) {
+        .boxLogin {
+            width: 400px;
+
+            .boxAuthOther {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                height: auto;
+            }
+        }
+
+
+
+    }
+
+
+    @media screen and (min-width: 500px) {
+        .boxLogin {
+
+
+            width: 400px;
+        }
+
+
+    }
