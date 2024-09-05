@@ -1,11 +1,10 @@
-@import url('@assets/aniamtions/register.module.scss');
-
-
 .boxRegister {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    max-width: 400px;
+    width: 100%;
 
     .boxInputs {
         width: 100%;
@@ -14,17 +13,7 @@
 
     }
 
-    .btnRegister {
-        background: transparent;
-        border: 1px solid var(--white);
-        margin-top: 20px;
-        color: var(--white);
 
-        &:hover {
-            background: var(--white);
-            color: var(--blood);
-        }
-    }
 
     .closeIcon {
         position: absolute;
@@ -43,39 +32,19 @@
 
 }
 
-@media screen and (min-width: 480px) {
-    .boxRegister {
-        .btnRegister {
-            width: 300px;
-        }
-    }
-
-}
+@media screen and (min-width: 480px) {}
 
 @media screen and (min-width: 500px) {
     .boxRegister {
-        .btnRegister {
-            width: 300px;
-        }
-    }
-
-
-}
-
-@media screen and (min-width: 500px) and (max-height: 700px) {
-    .boxRegister {
-
-        .btnRegister {
-            width: 300px;
-        }
+        width: 400px;
     }
 }
+
+@media screen and (min-width: 500px) and (max-height: 700px) {}
 
 @media screen and (min-width: 520px) and (min-height: 700px) and (max-height: 900px) {
     .boxRegister {
-        .btnRegister {
-            width: 300px;
-        }
+
 
         .closeIcon {
             right: 20px;
@@ -90,9 +59,6 @@
 @media screen and (min-width: 1080px) {
     .boxRegister {
 
-        .btnRegister {
-            font-size: 20px;
-        }
 
         .closeIcon {
             right: 20px;
