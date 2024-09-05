@@ -32,11 +32,13 @@
             .auth {
                 background-color: var(--buttonAuth);
                 transform: skewX(-15deg);
+                will-change: transform;
                 transition: background-color 0.3s ease;
+                height: 25px;
+                padding-left: 10px;
+                padding-right: 10px;
 
-                &:last-of-type {
-                    transform: skewX(-15deg);
-                }
+
 
                 &:hover {
                     background-color: var(--buttonAuthHover)
@@ -87,7 +89,7 @@
 
                 .auth {
                     background-color: var(--buttonAuth);
-                    transform: skewX(-15deg);
+
                     transition: background-color 0.3s ease;
                     font-size: 12px;
 
@@ -155,6 +157,8 @@
                 flex-direction: row;
 
                 .auth {
+                    height: 30px;
+
                     &:first-of-type {
                         margin-bottom: 0px;
                     }
