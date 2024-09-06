@@ -4,17 +4,17 @@
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
   ],
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@components/*": ["src/components/*"],
-      "@assets/*": ["src/assets/*"],
-      "@data/*": ["src/data/*"],
-        "@hooks/*": ["src/hooks/*"],
-        "@pages/*": ["src/pages/*"],
-        "@interfaces/*":["src/interfaces"],
-            "@validations/*":["src/validations"]
+  // "compilerOptions": {
+  //   "baseUrl": ".",
+  //   "paths": {
+  //     "@components/*": ["src/components/*"],
+  //     "@assets/*": ["src/assets/*"],
+  //     "@data/*": ["src/data/*"],
+  //       "@hooks/*": ["src/hooks/*"],
+  //       "@pages/*": ["src/pages/*"],
+  //       "@interfaces/*":["src/interfaces"],
+  //           "@validations/*":["src/validations"]
 
-    }
-  }
+  //   }
+  // }
 }

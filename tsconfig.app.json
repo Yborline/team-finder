@@ -27,8 +27,9 @@
     "@hooks/*": ["hooks/*"],
     "@pages/*": ["pages/*"],
     "@interfaces/*":["interfaces/*"],
-    "@validations/*":["validations/*"]
-    
+    "@validations/*":["validations/*"],
+    "@redux/*":["redux/*"]
+  
     }
   },
   "include": ["src"]
