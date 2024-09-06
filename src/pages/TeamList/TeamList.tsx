@@ -1,3 +1,5 @@
-export const TeamList = () => {
+const TeamList = () => {
   return;
 };
+
+export default TeamList;
