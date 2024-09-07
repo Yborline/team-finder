@@ -15,6 +15,7 @@ export default defineConfig({
       "@interfaces": path.resolve(__dirname, "./src/interfaces"),
       "@validations": path.resolve(__dirname, "./src/validations"),
       "@redux": path.resolve(__dirname, "./src/redux"),
+      "@api": path.resolve(__dirname, "./src/api"),
     },
   },
 });
