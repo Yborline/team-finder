@@ -1,4 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
+import authOperations from "./auth-operations";
+import { error } from "console";
 
 const initialState = {
   user: { name: null, email: null },
@@ -6,10 +8,53 @@ const initialState = {
   isLoggedIn: false,
   isFetchingCurrentUser: false,
   isLoading: false,
+  error: null as string | null,
 };
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  extraReducers: {},
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(authOperations.register.fulfilled, (state) => {
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(authOperations.register.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(authOperations.register.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message ?? "Unknown error";
+      })
+      .addCase(authOperations.logIn.fulfilled, (state, action) => {
+        state.user = action.payload.data.user;
+        state.token = action.payload.data.token;
+        state.isLoggedIn = true;
+      })
+      .addCase(authOperations.logOut.fulfilled, (state) => {
+        state.user = { name: null, email: null };
+        state.token = null;
+        state.isLoggedIn = false;
+      })
+      .addCase(authOperations.fetchCurrentUser.pending, (state) => {
+        state.isFetchingCurrentUser = true;
+      })
+      .addCase(
+        authOperations.fetchCurrentUser.fulfilled,
+        (state, { payload }) => {
+          state.user = payload;
+          state.isLoggedIn = true;
+          state.isFetchingCurrentUser = false;
+        }
+      )
+      .addCase(authOperations.fetchCurrentUser.rejected, (state, action) => {
+        state.isFetchingCurrentUser = false;
+        state.error = action.error.message ?? "Unknown error"; // Зберігаємо повідомлення про помилку
+      });
+  },
 });
+
+export default authSlice.reducer;
