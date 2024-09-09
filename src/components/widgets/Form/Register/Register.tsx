@@ -12,18 +12,16 @@ import ButtonAuth from "@components/shared/Button/ButtonAuth/ButtonAuth";
 import Google from "@components/shared/Button/ButtonOtherAuth/Google/Google";
 import Discord from "@components/shared/Button/ButtonOtherAuth/Discord/Discord";
 import AuthOtherBox from "@components/widgets/AuthOtherBox/AuthOtherBox";
+import authOperations from "@redux/auth/auth-operations";
+import { useAppDispatch, AppDispatch } from "@interfaces/redux";
+import { IFormInput } from "@interfaces/form";
 
 interface IPropsRegister {
   close: () => void;
 }
-interface IFormInput {
-  name: string;
-  email: string;
-  password: string;
-  repeatPassword: string;
-}
 
 const Register: FC<IPropsRegister> = ({ close }) => {
+  const dispatch = useAppDispatch<AppDispatch>();
   const {
     register,
     handleSubmit,
@@ -31,7 +29,9 @@ const Register: FC<IPropsRegister> = ({ close }) => {
   } = useForm<IFormInput>({
     resolver: yupResolver(schemaRegister),
   });
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<IFormInput> = (data: IFormInput) => {
+    dispatch(authOperations.register(data));
+  };
 
   return (
     <ModalBackdropAuth close={close}>
@@ -71,7 +71,7 @@ const Register: FC<IPropsRegister> = ({ close }) => {
           />
           <ErrorText error={errors.repeatPassword} />
         </div>
-        <ButtonAuth text="Зареєструватися" type="button" />
+        <ButtonAuth text="Зареєструватися" type="submit" />
         <AuthOtherBox />
       </form>
     </ModalBackdropAuth>
