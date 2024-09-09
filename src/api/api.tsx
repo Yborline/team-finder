@@ -5,7 +5,7 @@ import axios, {
 } from "axios";
 
 const api = axios.create({
-  baseURL: "https://numberphones.onrender.com/api/",
+  baseURL: "http://95.135.51.126:80/api/",
   withCredentials: true, // Дозволяє відправляти кукі з кожним запитом
 });
 
