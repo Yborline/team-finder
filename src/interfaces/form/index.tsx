@@ -18,3 +18,10 @@ export interface ButtonDiscordGoogle {
   onClick: () => void;
   text: string;
 }
+
+export interface IFormInput {
+  name: string;
+  email: string;
+  password: string;
+  repeatPassword: string;
+}
