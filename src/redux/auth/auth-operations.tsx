@@ -15,7 +15,7 @@ const register = createAsyncThunk(
   "auth/register",
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await api.post("users/signup", credentials);
+      const { data } = await api.post("users/register", credentials);
       token.set(data.token);
       return data;
     } catch (error) {
@@ -54,6 +54,7 @@ const fetchCurrentUser = createAsyncThunk(
     // token.set(persistedToken);
     try {
       const { data } = await api.get("/users/current");
+      console.log(data);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
