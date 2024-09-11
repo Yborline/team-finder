@@ -1,8 +1,11 @@
+import Filter from "@components/widgets/Filter/Filter";
 import ListPlayers from "@components/widgets/ListPlayers/ListPlayers";
+import { IListPlayerItem } from "@interfaces/teamList";
+import styles from "./TeamList.module.scss";
 
-const mokkaPlayers = [
+const mokkaPlayers: IListPlayerItem[] = [
   {
-    name: "Lol",
+    name: "LLLLLLLLLLLLLLLLLLLL",
     type: "solo",
     game: "dota 2",
     tags: ["mid", "pudge", "4k mmr"],
@@ -26,9 +29,10 @@ const mokkaPlayers = [
 
 const TeamList = () => {
   return (
-    <>
+    <div className={styles.boxTeam}>
+      <Filter />
       <ListPlayers list={mokkaPlayers} />
-    </>
+    </div>
   );
 };
 
