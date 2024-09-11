@@ -1,0 +1,75 @@
+.boxFilter {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .boxInput {
+        position: relative;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+
+        .inputFilter {
+            background: var(--filter-background);
+            width: 100%;
+            height: 35px;
+            border-radius: 16px;
+            will-change: transform;
+            transform: skew(-15deg);
+            padding-left: 20px;
+            padding-right: 45px;
+            font-size: 20px;
+            transition: box-shadow 0.3s ease;
+
+            &:hover {
+                box-shadow: var(--filter-box-shadow-hover);
+            }
+
+            &:focus {
+                border: 1px solid var(--white);
+                box-shadow: var(--filter-box-shadow-hover);
+            }
+        }
+
+        .iconSearch {
+            position: absolute;
+            right: 20px;
+            width: 20px;
+            height: 20px
+        }
+    }
+
+    .buttonFilter {
+
+        width: 150px;
+        height: 30px;
+        margin-top: 10px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding-left: 20px;
+        padding-right: 20px;
+        justify-content: space-between;
+        transform: skew(-15deg);
+        border-radius: 8px;
+        background: var(--filter-background);
+        transition: box-shadow 0.3s ease;
+
+        &:hover {
+
+            box-shadow: var(--filter-box-shadow-hover);
+        }
+
+        .iconFilter {
+
+
+            width: 20px;
+            height: 20px;
+            margin-left: 10px;
+        }
+    }
+
+
+}
