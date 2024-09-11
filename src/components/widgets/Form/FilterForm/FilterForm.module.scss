@@ -1,0 +1,13 @@
+.boxForm {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: var(--team-background);
+}
+
+
+@media screen and (min-width: 400px) {
+    .boxForm {
+        width: 340px;
+    }
+}
