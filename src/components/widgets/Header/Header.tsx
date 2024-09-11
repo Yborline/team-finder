@@ -25,7 +25,7 @@ export const Header = () => {
     <header className={styles.header}>
       <div className={styles.mainBox}>
         <div className={styles.boxLeft}>
-          <Link className={styles.linkLogo} to={"./home"}>
+          <Link className={styles.linkLogo} to={"/"}>
             TeamTinder
           </Link>
           <LanguageButton />
