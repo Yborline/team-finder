@@ -7,8 +7,6 @@ import styles from "./Login.module.scss";
 import { SubmitHandler, useForm } from "react-hook-form";
 import schemaLogin from "@validations/login";
 import { FC } from "react";
-import Google from "@components/shared/Button/ButtonOtherAuth/Google/Google";
-import Discord from "@components/shared/Button/ButtonOtherAuth/Discord/Discord";
 import AuthOtherBox from "@components/widgets/AuthOtherBox/AuthOtherBox";
 
 interface IPropsLogin {
