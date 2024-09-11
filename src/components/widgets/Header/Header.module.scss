@@ -23,6 +23,12 @@
 
             .linkLogo {
                 font-size: 15px;
+                transition: text-shadow 0.3s ease;
+
+
+                &:hover {
+                    text-shadow: var(--text-shadow);
+                }
             }
         }
 
