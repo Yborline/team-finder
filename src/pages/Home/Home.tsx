@@ -12,11 +12,12 @@ import stalker3k from "@assets/img/home/rightView/rightPersons/stalker/stalker3k
 import WukongMob from "@assets/img/home/rightView/rightPersons/wukong/WukongMob.png";
 import Wukong from "@assets/img/home/rightView/rightPersons/wukong/Wukong.png";
 import Wukong3k from "@assets/img/home/rightView/rightPersons/wukong/Wukong3k.png";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
   return (
     <div className={styles.mainHome}>
-      <div onClick={() => {}} className={styles.leftView}>
+      <Link to={"/team"} className={styles.leftView}>
         <img
           src={meepoMob}
           srcSet={`
@@ -41,9 +42,9 @@ export const Home = () => {
           alt="gta"
         />
         {/* <img className={styles.gta} alt="gta" /> */}
-      </div>
+      </Link>
       <img className={styles.line} src={line} alt="line" />
-      <div onClick={() => {}} className={styles.rightView}>
+      <Link to={"/create"} className={styles.rightView}>
         <img
           src={stalkerMob}
           srcSet={`
@@ -67,7 +68,7 @@ export const Home = () => {
           className={styles.wukongMob}
           alt="Wukong"
         />
-      </div>
+      </Link>
     </div>
   );
 };
