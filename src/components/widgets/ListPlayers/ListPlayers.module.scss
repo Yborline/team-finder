@@ -1,0 +1,23 @@
+.listPlayers {
+    margin-top: 20px;
+
+
+    .boxPlayer {
+        border-radius: 16px;
+        border: 1px solid var(--listPlyerItemBorder);
+        margin-bottom: 15px;
+        color: var(--grayLightText);
+        padding: 20px;
+
+        &:hover {
+            border: 1px solid var(--listPlyerItemBorderHover);
+            box-shadow: var(--filter-box-shadow-hover);
+        }
+
+        .namePlayer {
+            font-size: 20px;
+            color: var(--grayLightText);
+            text-align: center;
+        }
+    }
+}
