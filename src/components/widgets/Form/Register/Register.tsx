@@ -30,7 +30,31 @@ const Register: FC<IPropsRegister> = ({ close }) => {
     resolver: yupResolver(schemaRegister),
   });
   const onSubmit: SubmitHandler<IFormInput> = (data: IFormInput) => {
-    dispatch(authOperations.register(data));
+    const { repeatPassword, ...filteredData } = data;
+    console.log(filteredData);
+    dispatch(authOperations.register(filteredData));
+    // fetch("http://95.135.51.126/api/users/register", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(filteredData),
+    // })
+    //   .then((response) => {
+    //     if (!response.ok) {
+    //       throw new Error("Network response was not ok");
+    //     }
+    //     return response.text(); // Use text() instead of json()
+    //   })
+    //   .then((text) => {
+    //     return text ? JSON.parse(text) : {}; // Parse JSON only if text is not empty
+    //   })
+    //   .then((data) => {
+    //     console.log("Success:", data);
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error:", error);
+    //   });
   };
 
   return (
