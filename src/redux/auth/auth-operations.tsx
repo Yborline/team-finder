@@ -1,21 +1,22 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import api from "@api/api"; // Змініть на правильний шлях до вашого інстансу Axios
+// import api from "@api/api";
+import axios from "axios";
 
 const token = {
   set(token: string) {
-    document.cookie = `token=${token}; path=/; secure; HttpOnly; SameSite=Strict`;
+    document.cookie = `token=${token}; path=/; secure; SameSite=Strict`;
   },
   unset() {
-    document.cookie =
-      "token=; Max-Age=0; path=/; secure; HttpOnly; SameSite=Strict";
+    document.cookie = "token=; Max-Age=0; path=/; secure; SameSite=Strict";
   },
 };
+axios.defaults.baseURL = "http://95.135.51.126/api/";
 
 const register = createAsyncThunk(
   "auth/register",
   async (credentials, thunkAPI) => {
     try {
-      const { data } = await api.post("users/register", credentials);
+      const { data } = await axios.post("users/register", credentials);
       token.set(data.token);
       return data;
     } catch (error) {
@@ -26,7 +27,7 @@ const register = createAsyncThunk(
 
 const logIn = createAsyncThunk("auth/login", async (credentials, thunkAPI) => {
   try {
-    const { data } = await api.post("users/login", credentials);
+    const { data } = await axios.post("users/login", credentials);
     token.set(data.token);
     return data;
   } catch (error) {
@@ -36,7 +37,7 @@ const logIn = createAsyncThunk("auth/login", async (credentials, thunkAPI) => {
 
 const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
-    await api.post("users/logout");
+    await axios.post("users/logout");
     token.unset();
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
@@ -53,7 +54,7 @@ const fetchCurrentUser = createAsyncThunk(
     // }
     // token.set(persistedToken);
     try {
-      const { data } = await api.get("/users/current");
+      const { data } = await axios.get("/users/current");
       console.log(data);
       return data;
     } catch (error) {

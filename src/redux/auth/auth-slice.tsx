@@ -17,7 +17,8 @@ const authSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(authOperations.register.fulfilled, (state) => {
+      .addCase(authOperations.register.fulfilled, (state, action) => {
+        console.log(action.payload);
         state.isLoading = false;
         state.error = null;
       })
@@ -26,10 +27,12 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(authOperations.register.rejected, (state, action) => {
+        console.log(action.payload);
         state.isLoading = false;
         state.error = action.error.message ?? "Unknown error";
       })
       .addCase(authOperations.logIn.fulfilled, (state, action) => {
+        console.log("Payload:", action.payload);
         state.user = action.payload.data.user;
         state.token = action.payload.data.token;
         state.isLoggedIn = true;
