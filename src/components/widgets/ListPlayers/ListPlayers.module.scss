@@ -21,3 +21,35 @@
         }
     }
 }
+
+
+@media screen and (min-width: 768px) {
+    .listPlayers {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+
+        .boxPlayer {
+            margin-bottom: 0px;
+        }
+
+
+    }
+
+}
+
+
+@media screen and (min-width: 1024px) {
+    .listPlayers {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+
+        .boxPlayer {
+            margin-bottom: 0px;
+        }
+
+
+    }
+
+}
