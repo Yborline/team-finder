@@ -5,3 +5,20 @@
     flex-direction: column;
     background: var(--team-background);
 }
+
+
+@media screen and (min-width: 480px) {
+    .boxTeam {
+        padding: 10px 30px;
+
+    }
+}
+
+@media screen and (min-width: 530px) {
+    .boxTeam {
+        padding: 10px 40px;
+
+    }
+}
+
+@media screen and (min-width: 768px) {}
