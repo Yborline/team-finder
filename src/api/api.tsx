@@ -1,11 +1,8 @@
-import axios, {
-  AxiosHeaders,
-  AxiosRequestConfig,
-  InternalAxiosRequestConfig,
-} from "axios";
+import axios, { AxiosHeaders, InternalAxiosRequestConfig } from "axios";
 
+// Створення кастомного інстансу Axios
 const api = axios.create({
-  baseURL: "http://95.135.51.126:80/api/",
+  baseURL: "http://95.135.51.126/api/",
   withCredentials: true, // Дозволяє відправляти кукі з кожним запитом
 });
 
