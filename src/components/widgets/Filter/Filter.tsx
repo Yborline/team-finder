@@ -9,11 +9,20 @@ import Modal from "@components/shared/Modal/Modal";
 
 const Filter = () => {
   const [showModal, setShowModal] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
 
   const toggleModal = () => {
-    setShowModal(!showModal);
-  };
+    if (showModal) {
+      setIsClosing(true);
 
+      setTimeout(() => {
+        setShowModal(false);
+        setIsClosing(false);
+      }, 300);
+    } else {
+      setShowModal(true);
+    }
+  };
   return (
     <div className={styles.boxFilter}>
       <div className={styles.boxInput}>
@@ -30,7 +39,7 @@ const Filter = () => {
       </button>
       {showModal && (
         <Modal close={toggleModal}>
-          <FilterForm />
+          <FilterForm showModal={!isClosing} />
         </Modal>
       )}
     </div>
