@@ -73,3 +73,27 @@
 
 
 }
+
+@media screen and (min-width:480px) {
+    .boxFilter {
+        .boxInput {
+            width: 350px
+        }
+    }
+}
+
+@media screen and (min-width:768px) {
+    .boxFilter {
+        .boxInput {
+            width: 600px
+        }
+    }
+}
+
+@media screen and (min-width:1024px) {
+    .boxFilter {
+        .boxInput {
+            width: 700px
+        }
+    }
+}
