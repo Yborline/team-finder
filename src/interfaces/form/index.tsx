@@ -25,3 +25,13 @@ export interface IFormInput {
   password: string;
   repeatPassword: string;
 }
+export interface IFormRegisterSend {
+  name: string;
+  email: string;
+  password: string;
+}
+
+export interface IFormLogin {
+  name: string;
+  password: string;
+}
