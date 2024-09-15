@@ -1,6 +1,9 @@
 .listPlayers {
     margin-top: 20px;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     .boxPlayer {
         border-radius: 16px;
@@ -8,6 +11,10 @@
         margin-bottom: 15px;
         color: var(--grayLightText);
         padding: 20px;
+        width: 280px;
+        height: 330px;
+        box-sizing: border-box;
+        transition: box-shadow 0.2s ease;
 
         &:hover {
             border: 1px solid var(--listPlyerItemBorderHover);
@@ -22,11 +29,12 @@
     }
 }
 
-
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 600px) {
     .listPlayers {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+        justify-items: center;
         gap: 15px;
 
         .boxPlayer {
@@ -39,17 +47,33 @@
 }
 
 
+
+
 @media screen and (min-width: 1024px) {
     .listPlayers {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 15px;
+
 
         .boxPlayer {
             margin-bottom: 0px;
         }
-
-
     }
+}
 
+@media screen and (min-width: 1320px) {
+    .listPlayers {
+
+        .boxPlayer {
+            margin-bottom: 0px;
+        }
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .listPlayers {
+        max-width: 1700px;
+
+        .boxPlayer {
+            margin-bottom: 0px;
+        }
+    }
 }
