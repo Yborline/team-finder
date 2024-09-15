@@ -8,22 +8,25 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import schemaLogin from "@validations/login";
 import { FC } from "react";
 import AuthOtherBox from "@components/widgets/AuthOtherBox/AuthOtherBox";
+import { AppDispatch, useAppDispatch } from "@interfaces/redux";
+import authOperations from "@redux/auth/auth-operations";
+import { IFormLogin } from "@interfaces/form";
 
 interface IPropsLogin {
   close: () => void;
 }
 
-interface IFormLogin {
-  name: string;
-  password: string;
-}
 const Login: FC<IPropsLogin> = ({ close }) => {
+  const dispatch = useAppDispatch<AppDispatch>();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<IFormLogin>({ resolver: yupResolver(schemaLogin) });
-  const onSubmit: SubmitHandler<IFormLogin> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<IFormLogin> = (data: IFormLogin) => {
+    console.log(data);
+    dispatch(authOperations.logIn(data));
+  };
 
   return (
     <ModalBackdropAuth close={close}>
