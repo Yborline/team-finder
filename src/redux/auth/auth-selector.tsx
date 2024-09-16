@@ -1,3 +1,4 @@
-import { RootState } from "@interfaces/redux";
+import { IRootState } from "@interfaces/redux";
 
-export const getUserName = (state: RootState) => state.auth.user.name;
+export const getUserName = (state: IRootState) => state.auth.user.name;
+export const getLoggedIn = (state: IRootState) => state.auth.isLoggedIn;
