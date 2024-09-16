@@ -2,6 +2,10 @@ import Filter from "@components/widgets/Filter/Filter";
 import ListPlayers from "@components/widgets/ListPlayers/ListPlayers";
 import { IListPlayerItem } from "@interfaces/teamList";
 import styles from "./TeamList.module.scss";
+import { useDebugValue, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, useAppDispatch } from "@interfaces/redux";
+import postsOperations from "@redux/posts/posts-operations";
 
 const mokkaPlayers: IListPlayerItem[] = [
   {
@@ -70,6 +74,11 @@ const mokkaPlayers: IListPlayerItem[] = [
 ];
 
 const TeamList = () => {
+  const dispatch = useAppDispatch<AppDispatch>();
+  const posts = useSelector();
+  useEffect(() => {
+    dispatch(postsOperations.getPosts());
+  });
   return (
     <div className={styles.boxTeam}>
       <Filter />
