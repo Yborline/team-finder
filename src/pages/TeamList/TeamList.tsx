@@ -6,6 +6,7 @@ import { useDebugValue, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, useAppDispatch } from "@interfaces/redux";
 import postsOperations from "@redux/posts/posts-operations";
+import { getPosts } from "@redux/posts/posts-selector";
 
 const mokkaPlayers: IListPlayerItem[] = [
   {
@@ -75,10 +76,10 @@ const mokkaPlayers: IListPlayerItem[] = [
 
 const TeamList = () => {
   const dispatch = useAppDispatch<AppDispatch>();
-  const posts = useSelector();
+  const posts = useSelector(getPosts);
   useEffect(() => {
     dispatch(postsOperations.getPosts());
-  });
+  }, []);
   return (
     <div className={styles.boxTeam}>
       <Filter />
