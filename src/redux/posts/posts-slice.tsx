@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import postsOperations from "./posts-operations";
 import { IErrorResponse } from "@interfaces/slicer";
 import { PostsState, Post } from "@interfaces/posts";
@@ -30,12 +30,9 @@ const postsSlice = createSlice({
         state.error = true;
         state.notify = (payload as IErrorResponse).response.data;
       })
-      .addCase(
-        postsOperations.addPost.fulfilled,
-        (state, { payload }: PayloadAction<{ post: Post }>) => {
-          state.posts = [payload.post, ...state.posts];
-        }
-      );
+      .addCase(postsOperations.addPost.fulfilled, (state, { payload }) => {
+        state.posts = [payload.post, ...state.posts];
+      });
   },
 });
 
