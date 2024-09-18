@@ -6,11 +6,16 @@ import { useState } from "react";
 import Modal from "@components/shared/Modal/Modal";
 import Register from "../Form/Register/Register";
 import Login from "../Form/Login/Login";
+import ButtonUser from "@components/shared/Button/ButtonUser/ButtonUser";
+import { useSelector } from "react-redux";
+import { getLoggedIn } from "@redux/auth/auth-selector";
 // import ThemeToggle from "@components/shared/ThemeToggle/ThemeToggle";
 
 type IButtonModal = false | "register" | "login";
 
 export const Header = () => {
+  const loggedIn = useSelector(getLoggedIn);
+
   const { t } = useTranslation();
   const [toggleModal, setToggleModal] = useState<IButtonModal>(false);
   const handleCloseModal = (value: IButtonModal) => {
@@ -30,20 +35,24 @@ export const Header = () => {
           </Link>
           <LanguageButton />
         </div>
-        <div className={styles.boxRight}>
-          <button
-            onClick={() => handleCloseModal("login")}
-            className={styles.auth}
-          >
-            {t("header.login")}
-          </button>
-          <button
-            onClick={() => handleCloseModal("register")}
-            className={styles.auth}
-          >
-            {t("header.signUp")}
-          </button>
-        </div>
+        {loggedIn ? (
+          <ButtonUser />
+        ) : (
+          <div className={styles.boxRight}>
+            <button
+              onClick={() => handleCloseModal("login")}
+              className={styles.auth}
+            >
+              {t("header.login")}
+            </button>
+            <button
+              onClick={() => handleCloseModal("register")}
+              className={styles.auth}
+            >
+              {t("header.signUp")}
+            </button>
+          </div>
+        )}
       </div>
 
       {toggleModal === "register" && (
