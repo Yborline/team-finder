@@ -1,13 +1,23 @@
 .boxForm {
+    box-sizing: border-box;
     position: absolute;
     height: 100%;
     width: 100%;
     background: var(--team-background);
+    padding: 30px 20px;
 }
 
 
 @media screen and (min-width: 400px) {
     .boxForm {
         width: 340px;
+
+        .boxOneFilter {
+            font-size: 20px;
+
+            .select {
+                height: 30px;
+            }
+        }
     }
 }
