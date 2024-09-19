@@ -15,7 +15,8 @@
             transform: translate(0%, -50%) rotate(80deg);
             pointer-events: none;
             z-index: 1;
-            /* Задает z-index ниже, чем у wukongMob */
+            user-select: none;
+
         }
 
         .leftView,
@@ -42,6 +43,7 @@
                 width: 100%;
                 stroke: 1px black;
                 text-align: center;
+                user-select: none;
             }
 
             &:hover {
@@ -62,6 +64,7 @@
 
             .meepo {
                 display: none;
+                user-select: none;
             }
 
             .gta {
@@ -72,6 +75,7 @@
                 bottom: 0px;
                 left: 50%;
                 transform: translate(-50%, 0%);
+                user-select: none;
             }
 
             .textLeft {
@@ -92,6 +96,7 @@
                 position: absolute;
                 object-fit: contain;
                 z-index: 3;
+                user-select: none;
 
             }
 
