@@ -12,9 +12,26 @@ import stalker3k from "@assets/img/home/rightView/rightPersons/stalker/stalker3k
 import WukongMob from "@assets/img/home/rightView/rightPersons/wukong/WukongMob.png";
 import Wukong from "@assets/img/home/rightView/rightPersons/wukong/Wukong.png";
 import Wukong3k from "@assets/img/home/rightView/rightPersons/wukong/Wukong3k.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { getLoggedIn } from "@redux/auth/auth-selector";
+import { AppDispatch, useAppDispatch } from "@interfaces/redux";
+import { setModal } from "@redux/modal/modal-slice";
 
 export const Home = () => {
+  const isLoggedIn = useSelector(getLoggedIn);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const dispatch = useAppDispatch<AppDispatch>();
+  const handleClickCreate = () => {
+    const currentPath = location.pathname;
+    if (!isLoggedIn) {
+      dispatch(setModal("login"));
+    } else {
+      navigate(`${currentPath}/create`);
+    }
+  };
+
   return (
     <div className={styles.mainHome}>
       <Link to={"/team"} className={styles.leftView}>
@@ -44,7 +61,11 @@ export const Home = () => {
         {/* <img className={styles.gta} alt="gta" /> */}
       </Link>
       <img className={styles.line} src={line} alt="line" />
-      <Link to={"/create"} className={styles.rightView}>
+      <button
+        // to={"/create"}
+        onClick={handleClickCreate}
+        className={styles.rightView}
+      >
         <img
           src={stalkerMob}
           srcSet={`
@@ -68,7 +89,7 @@ export const Home = () => {
           className={styles.wukongMob}
           alt="Wukong"
         />
-      </Link>
+      </button>
     </div>
   );
 };
