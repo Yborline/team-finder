@@ -12,7 +12,7 @@ const ListPlayers: FC<{ list: IListPlayerItem[] }> = ({ list }) => {
   };
   return (
     <ul className={styles.listPlayers}>
-      {list.map(({ name, tags, type, game, id }) => (
+      {list.map(({ name, tags, type, game, id, comment }) => (
         <li
           onClick={() => redirectToPlayerPage(id)}
           className={styles.boxPlayer}
@@ -21,6 +21,7 @@ const ListPlayers: FC<{ list: IListPlayerItem[] }> = ({ list }) => {
           <h3 className={styles.namePlayer}>{name}</h3>
           <p>game: {game}</p>
           <p>type: {type}</p>
+          <p>{comment}</p>
           {tags && (
             <>
               <p>tags: </p>
