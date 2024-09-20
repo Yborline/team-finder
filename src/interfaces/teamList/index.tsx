@@ -4,4 +4,5 @@ export interface IListPlayerItem {
   game: string;
   tags?: string[];
   id: string;
+  comment?: string;
 }
