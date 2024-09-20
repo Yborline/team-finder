@@ -9,21 +9,20 @@ import Login from "../Form/Login/Login";
 import ButtonUser from "@components/shared/Button/ButtonUser/ButtonUser";
 import { useSelector } from "react-redux";
 import { getLoggedIn } from "@redux/auth/auth-selector";
+import { getModal } from "@redux/modal/modal-selector";
+import { AppDispatch, useAppDispatch } from "@interfaces/redux";
+import { setModal } from "@redux/modal/modal-slice";
+import { ModalType } from "@interfaces/modal/intex";
 // import ThemeToggle from "@components/shared/ThemeToggle/ThemeToggle";
 
-type IButtonModal = false | "register" | "login";
-
 export const Header = () => {
+  const modal = useSelector(getModal);
   const loggedIn = useSelector(getLoggedIn);
-
+  const dispatch = useAppDispatch<AppDispatch>();
   const { t } = useTranslation();
-  const [toggleModal, setToggleModal] = useState<IButtonModal>(false);
-  const handleCloseModal = (value: IButtonModal) => {
-    if (toggleModal === value) {
-      setToggleModal(false);
-    } else {
-      setToggleModal(value);
-    }
+
+  const handleChangeModal = (value: ModalType) => {
+    dispatch(setModal(value));
   };
 
   return (
@@ -40,13 +39,13 @@ export const Header = () => {
         ) : (
           <div className={styles.boxRight}>
             <button
-              onClick={() => handleCloseModal("login")}
+              onClick={() => handleChangeModal("login")}
               className={styles.auth}
             >
               {t("header.login")}
             </button>
             <button
-              onClick={() => handleCloseModal("register")}
+              onClick={() => handleChangeModal("register")}
               className={styles.auth}
             >
               {t("header.signUp")}
@@ -55,14 +54,14 @@ export const Header = () => {
         )}
       </div>
 
-      {toggleModal === "register" && (
-        <Modal close={() => handleCloseModal(false)}>
-          <Register close={() => handleCloseModal(false)} />
+      {modal === "register" && (
+        <Modal close={() => handleChangeModal(null)}>
+          <Register close={() => handleChangeModal(null)} />
         </Modal>
       )}
-      {toggleModal === "login" && (
-        <Modal close={() => handleCloseModal(false)}>
-          <Login close={() => handleCloseModal(false)} />
+      {modal === "login" && (
+        <Modal close={() => handleChangeModal(null)}>
+          <Login close={() => handleChangeModal(null)} />
         </Modal>
       )}
     </header>
