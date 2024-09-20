@@ -7,16 +7,39 @@ import { useDispatch } from "react-redux";
 import operationsAuth from "@redux/auth/auth-operations";
 import { AppDispatch, useAppDispatch } from "@interfaces/redux";
 import { postGoogleAuth } from "@api/fetchGoogle";
+import {
+  CredentialResponse,
+  GoogleLogin,
+  useGoogleLogin,
+} from "@react-oauth/google";
 
 const Google: FC<ButtonDiscordGoogle> = ({ text }) => {
-  // const dispatch = useAppDispatch<AppDispatch>();
+  const dispatch = useAppDispatch<AppDispatch>();
 
-  const handleCLickGoogle = async () => {
-    const response = await postGoogleAuth("/auth/google");
-    window.open(response, "_blank");
+  const handleSuccessGoogle = (credentialResponse: CredentialResponse) => {
+    const { credential } = credentialResponse;
+    if (credential) dispatch(operationsAuth.logInG(credential));
   };
+  console.log(text);
+
+  const login = useGoogleLogin({
+    onSuccess: (codeResponse) => {
+      console.log(codeResponse);
+      const { code } = codeResponse;
+      if (code) dispatch(operationsAuth.logInG(code));
+    },
+    flow: "auth-code",
+  });
   return (
-    <ButtonOtherAuth onClick={handleCLickGoogle} text={text}>
+    // <>
+    //   <GoogleLogin
+    //     onSuccess={handleSuccessGoogle}
+    //     onError={() => {
+    //       console.log("Login Failed");
+    //     }}
+    //   />
+    // </>
+    <ButtonOtherAuth onClick={login} text={text}>
       <img className={styles.google} src={google} />
     </ButtonOtherAuth>
   );
