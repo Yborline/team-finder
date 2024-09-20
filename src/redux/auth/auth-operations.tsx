@@ -17,7 +17,7 @@ const register = createAsyncThunk(
   "auth/register",
   async (credentials: IFormRegisterSend, thunkAPI) => {
     try {
-      const { data } = await api.post("users/register", credentials);
+      const { data } = await api.post("auth/register", credentials);
       token.set(data.token);
       return data;
     } catch (error) {
@@ -30,7 +30,7 @@ const logIn = createAsyncThunk(
   "auth/login",
   async (credentials: IFormLogin, thunkAPI) => {
     try {
-      const { data } = await api.post("users/auth", credentials);
+      const { data } = await api.post("auth/login", credentials);
 
       token.set(data.access_token);
       return data;
@@ -39,10 +39,23 @@ const logIn = createAsyncThunk(
     }
   }
 );
+const logInG = createAsyncThunk(
+  "auth/google",
+  async (credentials: string, { rejectWithValue }) => {
+    try {
+      const { data } = await api.post(`auth/google/${credentials}`);
+      console.log(data);
+      // token.set(data.access_token);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
 
 const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
-    await api.post("users/logout");
+    await api.post("auth/logout");
     token.unset();
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
@@ -59,7 +72,7 @@ const fetchCurrentUser = createAsyncThunk(
     // }
     // token.set(persistedToken);
     try {
-      const { data } = await api.get("/users/current");
+      const { data } = await api.get("/auth/current");
       console.log(data);
       return data;
     } catch (error) {
@@ -68,11 +81,12 @@ const fetchCurrentUser = createAsyncThunk(
   }
 );
 
-const operations = {
+const operationsAuth = {
   register,
   logOut,
   logIn,
   fetchCurrentUser,
+  logInG,
 };
 
-export default operations;
+export default operationsAuth;
