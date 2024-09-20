@@ -60,8 +60,27 @@ const authSlice = createSlice({
         state.user = { name: null };
         state.token = null;
         state.isLoggedIn = false;
-      });
+      })
+      .addCase(authOperations.logInG.fulfilled, (state, { payload }) => {
+        console.log("Payload:", payload);
+        state.isLoading = false;
+        state.user = { name: payload.username };
+        state.token = payload.access_token;
+        state.isLoggedIn = true;
+      })
 
+      .addCase(authOperations.logInG.pending, (state, { payload }) => {
+        console.log("Payload:", payload);
+        state.isLoggedIn = false;
+        state.isLoading = true;
+        state.isLoggedIn = false;
+      })
+      .addCase(authOperations.logInG.rejected, (state, { payload }) => {
+        console.log("Payload:", payload);
+        state.isLoggedIn = true;
+        state.isLoggedIn = false;
+        state.isLoading = false;
+      });
     // .addCase(
     //   authOperations.fetchCurrentUser.fulfilled,
     //   (state, { payload }) => {
