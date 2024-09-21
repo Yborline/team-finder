@@ -4,12 +4,14 @@ import { UseFormRegisterReturn } from "react-hook-form";
 import VisiblePassword from "../VisiblePassword/VisiblePassword";
 
 type inputType = "text" | "number" | "password";
+type possibleClassN = "transparent";
 
 interface IPropsInputModal {
   hookForm: UseFormRegisterReturn;
   text: string;
   type?: inputType;
   repeatPassword?: boolean;
+  classN?: null | possibleClassN;
 }
 
 export const InputModal: FC<IPropsInputModal> = ({
@@ -17,6 +19,7 @@ export const InputModal: FC<IPropsInputModal> = ({
   repeatPassword,
   text,
   type = "string",
+  classN = null,
 }) => {
   const [passwordType, setPasswordType] = useState(true);
 
@@ -36,7 +39,7 @@ export const InputModal: FC<IPropsInputModal> = ({
     <div className={styles.inputContainer}>
       <input
         {...hookForm}
-        className={styles.inputMain}
+        className={`${styles.inputMain} ${classN ? styles[classN] : ""}`}
         placeholder={text}
         type={getTypeInput()}
         autoComplete={repeatPassword ? "new-password" : "on"}
