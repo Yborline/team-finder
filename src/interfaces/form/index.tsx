@@ -35,3 +35,12 @@ export interface IFormLogin {
   name: string;
   password: string;
 }
+
+type typePost = "solo" | "group";
+
+export interface IFormCreatePost {
+  type: typePost;
+  comment?: string;
+  tags?: (string | undefined)[];
+  game: string;
+}
