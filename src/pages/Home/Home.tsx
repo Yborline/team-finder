@@ -25,10 +25,11 @@ export const Home = () => {
   const dispatch = useAppDispatch<AppDispatch>();
   const handleClickCreate = () => {
     const currentPath = location.pathname;
+
     if (!isLoggedIn) {
       dispatch(setModal("login"));
     } else {
-      navigate(`${currentPath}/create`);
+      navigate(`${currentPath}create`);
     }
   };
 

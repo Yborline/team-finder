@@ -35,14 +35,14 @@ const Login: FC<IPropsLogin> = ({ close }) => {
           <InputModal
             hookForm={register("name", { required: true, maxLength: 20 })}
             text="Нікнейм"
-            aria-invalid={errors.name ? "true" : "false"}
+            // aria-invalid={errors.name ? "true" : "false"}
           />
           <ErrorText error={errors.name} />
           <InputModal
             hookForm={register("password", { required: true, maxLength: 20 })}
             text="Пароль"
             type="password"
-            aria-invalid={errors.password ? "true" : "false"}
+            // aria-invalid={errors.password ? "true" : "false"}
             repeatPassword={true}
           />
           <ErrorText error={errors.password} />
