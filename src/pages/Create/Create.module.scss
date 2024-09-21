@@ -1,4 +1,27 @@
+@import '@assets/aniamtions/post.module.scss';
+
+
 .boxCreate {
     flex: 1;
 
+    overflow: hidden;
+    position: relative;
+    background-color: var(--post-page-background);
+    padding: 10px 20px;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+
+        background-image: url('@assets/img/createPost/background8.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: auto;
+        animation: rotate 50s linear infinite;
+        filter: saturate(0.5) hue-rotate(25deg);
+    }
 }

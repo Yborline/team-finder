@@ -1,8 +1,13 @@
 import React from "react";
 import styles from "./Create.module.scss";
+import CreatePost from "@components/widgets/Form/CreatePost/CreatePost";
 
 const Create = () => {
-  return <div className={styles.boxCreate}></div>;
+  return (
+    <div className={styles.boxCreate}>
+      <CreatePost />
+    </div>
+  );
 };
 
 export default Create;
