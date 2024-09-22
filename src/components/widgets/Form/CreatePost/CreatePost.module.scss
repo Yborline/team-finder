@@ -1,3 +1,10 @@
 .FormCreatePost {
     position: relative;
+
+    .boxRadio {
+        display: grid;
+        flex-direction: column;
+
+        gap: 10px;
+    }
 }
