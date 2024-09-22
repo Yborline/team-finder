@@ -1,6 +1,6 @@
 import ButtonAuth from "@components/shared/Button/ButtonAuth/ButtonAuth";
 import ErrorText from "@components/shared/ErrorText/ErrorText";
-import InputModal from "@components/shared/InputModal/InputModal";
+import InputModal from "@components/shared/Input/InputModal/InputModal";
 import ModalBackdropAuth from "@components/shared/Modal/ModalBackdropAuth/ModalBackdropAuth";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styles from "./Login.module.scss";
