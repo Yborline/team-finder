@@ -1,10 +1,8 @@
 import { FC, useState } from "react";
 import styles from "./InputModal.module.scss";
 import { UseFormRegisterReturn } from "react-hook-form";
-import VisiblePassword from "../VisiblePassword/VisiblePassword";
-
-type inputType = "text" | "number" | "password";
-type possibleClassN = "transparent";
+import VisiblePassword from "../../VisiblePassword/VisiblePassword";
+import { inputType, possibleClassN } from "@interfaces/form";
 
 interface IPropsInputModal {
   hookForm: UseFormRegisterReturn;
