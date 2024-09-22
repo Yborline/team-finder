@@ -44,3 +44,5 @@ export interface IFormCreatePost {
   tags?: (string | undefined)[];
   game: string;
 }
+
+export type possibleClassN = "transparent";
