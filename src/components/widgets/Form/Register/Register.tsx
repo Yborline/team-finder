@@ -1,6 +1,6 @@
 import { FC } from "react";
 import styles from "./Register.module.scss";
-import InputModal from "@components/shared/InputModal/InputModal";
+import InputModal from "@components/shared/Input/InputModal/InputModal";
 import { IoCloseSharp } from "react-icons/io5";
 import { IconContext } from "react-icons";
 import { useForm, SubmitHandler } from "react-hook-form";

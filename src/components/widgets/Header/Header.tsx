@@ -13,6 +13,7 @@ import { getModal } from "@redux/modal/modal-selector";
 import { AppDispatch, useAppDispatch } from "@interfaces/redux";
 import { setModal } from "@redux/modal/modal-slice";
 import { ModalType } from "@interfaces/modal/intex";
+import "react-toastify/dist/ReactToastify.css";
 // import ThemeToggle from "@components/shared/ThemeToggle/ThemeToggle";
 
 export const Header = () => {
