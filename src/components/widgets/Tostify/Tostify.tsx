@@ -1,9 +1,16 @@
 import { toast, Flip } from "react-toastify";
-type typeN = "success" | "error";
+import styles from "./Tostify.module.scss";
+type typeN = "success" | "error" | "info";
 
 export const notify = (typeN: typeN = "success", text: string) => {
+  const screenWidth = window.innerWidth;
+  let position: "top-center" | "bottom-center" = "top-center";
+
+  if (screenWidth < 768) {
+    position = "bottom-center"; // Позиція для мобільних
+  }
   toast[typeN](text, {
-    position: "top-center",
+    position,
     autoClose: 5000,
     hideProgressBar: false,
     closeOnClick: true,
@@ -12,5 +19,6 @@ export const notify = (typeN: typeN = "success", text: string) => {
     progress: undefined,
     theme: "dark",
     transition: Flip,
+    // className: styles.notify,
   });
 };
