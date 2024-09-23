@@ -1,16 +1,12 @@
 import { FC } from "react";
 import styles from "./Register.module.scss";
 import InputModal from "@components/shared/Input/InputModal/InputModal";
-import { IoCloseSharp } from "react-icons/io5";
-import { IconContext } from "react-icons";
 import { useForm, SubmitHandler } from "react-hook-form";
 import schemaRegister from "@validations/register";
 import { yupResolver } from "@hookform/resolvers/yup";
 import ErrorText from "@components/shared/ErrorText/ErrorText";
 import ModalBackdropAuth from "@components/shared/Modal/ModalBackdropAuth/ModalBackdropAuth";
 import ButtonAuth from "@components/shared/Button/ButtonAuth/ButtonAuth";
-import Google from "@components/shared/Button/ButtonOtherAuth/Google/Google";
-import Discord from "@components/shared/Button/ButtonOtherAuth/Discord/Discord";
 import AuthOtherBox from "@components/widgets/AuthOtherBox/AuthOtherBox";
 import authOperations from "@redux/auth/auth-operations";
 import { useAppDispatch, AppDispatch } from "@interfaces/redux";
@@ -25,14 +21,16 @@ const Register: FC<IPropsRegister> = ({ close }) => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<IFormInput>({
     resolver: yupResolver(schemaRegister),
   });
   const onSubmit: SubmitHandler<IFormInput> = (data: IFormInput) => {
     const { repeatPassword, ...filteredData } = data;
-    console.log(filteredData);
+    console.log(repeatPassword);
     dispatch(authOperations.register(filteredData));
+    reset();
     // fetch("http://95.135.51.126/api/users/register", {
     //   method: "POST",
     //   headers: {
