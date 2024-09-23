@@ -1,12 +1,14 @@
 .boxRegister {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    gap: 15px;
     justify-content: center;
     align-items: center;
     max-width: 400px;
     width: 100%;
 
     .boxInputs {
+        display: grid;
+        gap: 10px;
         width: 100%;
         height: max-content;
         transition: height 1s ease, max-height 1s ease;
