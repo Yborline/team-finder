@@ -2,7 +2,11 @@
     position: relative;
     width: 100%;
     height: max-content;
-    margin-bottom: 15px;
+
+    &.flexRow {
+        display: flex;
+        align-items: center;
+    }
 
     &:last-of-type {
         margin-bottom: 0px;
@@ -15,11 +19,11 @@
         border-radius: 16px;
         padding: 0 20px;
         text-align: center;
-        font-size: 20px;
+        font-size: 18px;
         background-color: var(--inputBackground);
         color: var(--whiteText);
         box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.75);
-        margin-bottom: 15px;
+
         -webkit-text-stroke: 1px black;
         transition: box-shadow 0.2s ease;
 
@@ -29,7 +33,7 @@
         }
 
         &:focus {
-            border: 1.5px solid var(--whiteText);
+            outline: 1.5px solid var(--whiteText);
 
         }
 
@@ -38,7 +42,7 @@
         }
 
         &::placeholder {
-            font-size: 17px;
+            font-size: 18px;
             color: var(--placeholder);
             font-family: "Rubick";
             -webkit-text-stroke: 1px black;
@@ -56,7 +60,7 @@
         &.transparent {
             background-color: transparent;
             color: var(--white);
-            border: 1px solid var(--white);
+            outline: 1px solid var(--white);
             // box-shadow: var(--filter-box-shadow-hover);
             backdrop-filter: blur(5px);
 
@@ -65,9 +69,23 @@
             }
 
             &:focus {
-                border: 2px solid var(--white);
+                outline: 2px solid var(--white);
                 box-shadow: var(--filter-box-shadow-hover);
             }
+        }
+    }
+
+    .buttonAdd {
+        width: 50px;
+        height: 50px;
+        color: var(--green);
+        margin-left: 10px;
+
+        // filter: drop-shadow(0 0 1.5px var(--white));
+
+        &:hover,
+        &:active {
+            filter: drop-shadow(0 0 1.5px var(--white));
         }
     }
 }
@@ -79,7 +97,7 @@
             font-size: 20px;
 
             &::placeholder {
-                font-size: 19px;
+                font-size: 20px;
             }
         }
     }
