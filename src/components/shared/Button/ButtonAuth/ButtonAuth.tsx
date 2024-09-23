@@ -1,11 +1,10 @@
 import { FC } from "react";
 import styles from "./ButtonAuth.module.scss";
-
-type type = "submit" | "button";
+import { typeB } from "@interfaces/button";
 
 interface IButtonAuth {
   text: string;
-  type: type;
+  type: typeB;
 }
 
 const ButtonAuth: FC<IButtonAuth> = ({ text, type = "submit" }) => {
