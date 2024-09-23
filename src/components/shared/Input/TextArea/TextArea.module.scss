@@ -9,6 +9,10 @@
     color: var(--white);
     border: 1px solid var(--white); // box-shadow: var(--filter-box-shadow-hover); 
     backdrop-filter: blur(5px);
+    resize: vertical;
+    min-height: 72px;
+    max-height: 120px;
+    font-size: 18px;
 
     &:hover {
         box-shadow: var(--filter-box-shadow-hover);
@@ -17,6 +21,10 @@
     &:focus {
         border: 2px solid var(--white);
         box-shadow: var(--filter-box-shadow-hover);
+    }
+
+    &::placeholder {
+        font-size: 20px;
     }
 
     // color: var(--whiteText);
