@@ -1,0 +1,28 @@
+.buttonSocials {
+    height: 40px;
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    outline: 1px solid var(--white);
+    color: var(--white);
+
+    .imgSocials {
+        width: 30px;
+        height: 30px;
+        margin-right: 5px;
+        transition: all 0.3s ease;
+        filter: grayscale(1);
+    }
+
+    &:hover {
+        color: var(--black);
+        background: var(--white);
+
+        .imgSocials {
+            filter: grayscale(0);
+        }
+    }
+
+}
