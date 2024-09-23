@@ -1,10 +1,30 @@
 .FormCreatePost {
     position: relative;
+    display: grid;
+    justify-items: center;
+    gap: 15px;
+    max-width: 400px;
 
     .boxRadio {
         display: grid;
-        flex-direction: column;
+        width: 100%;
+        gap: 15px;
+    }
 
-        gap: 10px;
+    .descTags {
+        color: var(--pale-text);
+        font-size: 20px;
+    }
+
+    .listTags {
+        color: var(--white);
+        font-size: 18px;
+    }
+
+    .boxSocials {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
     }
 }
