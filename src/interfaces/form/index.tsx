@@ -36,13 +36,15 @@ export interface IFormLogin {
   password: string;
 }
 
-type typePost = "solo" | "group";
+type typePost = "lookingForPlayers" | "lookingForGroup";
 
 export interface IFormCreatePost {
   type: typePost;
-  comment?: string;
-  tags?: (string | undefined)[];
+  comment?: string | null;
+  // tags?: (string | undefined)[];
   game: string;
+  discord: string;
+  telegram: string;
 }
 
 export type possibleClassN = "transparent";
