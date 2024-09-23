@@ -1,11 +1,13 @@
     .boxLogin {
-        display: flex;
-        flex-direction: column;
+        display: grid;
         justify-content: center;
         align-items: center;
         width: 100%;
+        gap: 15px;
 
         .boxInputs {
+            display: grid;
+            gap: 15px;
             width: 100%;
             height: max-content;
             transition: height 1s ease, max-height 1s ease;

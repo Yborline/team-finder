@@ -21,11 +21,13 @@ const Login: FC<IPropsLogin> = ({ close }) => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<IFormLogin>({ resolver: yupResolver(schemaLogin) });
   const onSubmit: SubmitHandler<IFormLogin> = (data: IFormLogin) => {
     console.log(data);
     dispatch(authOperations.logIn(data));
+    reset();
   };
 
   return (
