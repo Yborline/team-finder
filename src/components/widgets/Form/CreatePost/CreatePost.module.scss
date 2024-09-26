@@ -4,6 +4,7 @@
     justify-items: center;
     gap: 15px;
     max-width: 400px;
+    width: 100%;
 
     .boxRadio {
         display: grid;
@@ -26,5 +27,47 @@
         display: flex;
         justify-content: space-between;
 
+    }
+}
+
+
+@media screen and (min-width:220px) {
+
+    .FormCreatePost {
+        position: relative;
+        display: grid;
+        justify-items: center;
+        gap: 15px;
+        width: 100%;
+
+        .boxRadio {
+            display: grid;
+            width: 100%;
+            gap: 15px;
+        }
+
+        .descTags {
+            color: var(--pale-text);
+            font-size: 20px;
+        }
+
+        .listTags {
+            color: var(--white);
+            font-size: 18px;
+        }
+
+        .boxSocials {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+
+        }
+    }
+}
+
+@media screen and (min-width:440px) {
+
+    .FormCreatePost {
+        width: 400px;
     }
 }
