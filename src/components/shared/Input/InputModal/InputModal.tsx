@@ -10,6 +10,7 @@ interface IPropsInputModal {
   type?: inputType;
   repeatPassword?: boolean;
   classN?: null | possibleClassN;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const InputModal: FC<IPropsInputModal> = ({
@@ -18,6 +19,7 @@ export const InputModal: FC<IPropsInputModal> = ({
   text,
   type = "string",
   classN = null,
+  onChange,
 }) => {
   const [passwordType, setPasswordType] = useState(true);
 
@@ -37,6 +39,7 @@ export const InputModal: FC<IPropsInputModal> = ({
     <div className={styles.inputContainer}>
       <input
         {...hookForm}
+        onChange={onChange}
         className={`${styles.inputMain} ${classN ? styles[classN] : ""}`}
         placeholder={text}
         type={getTypeInput()}
