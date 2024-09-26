@@ -5,4 +5,6 @@ export interface IListPlayerItem {
   tags?: string[];
   id: string;
   comment?: string;
+  telegram: null | string;
+  discord: null | string;
 }
