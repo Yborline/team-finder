@@ -10,11 +10,14 @@
         border: 1px solid var(--listPlyerItemBorder);
         margin-bottom: 15px;
         color: var(--grayLightText);
-        padding: 20px;
+        padding: 10px 20px;
         width: 280px;
         height: 330px;
         box-sizing: border-box;
         transition: box-shadow 0.2s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
 
         &:hover {
             border: 1px solid var(--listPlyerItemBorderHover);
@@ -25,6 +28,31 @@
             font-size: 20px;
             color: var(--grayLightText);
             text-align: center;
+            word-wrap: break-word;
+        }
+
+        .boxSocials {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+
+            .imgSocial {
+                width: 40px;
+                height: 40px;
+                filter: grayscale(1);
+                cursor: pointer;
+                margin-right: 5px;
+                transition: all 0.3s ease;
+
+                &:hover {
+                    filter: grayscale(0);
+                    transform: scale(1.05);
+                }
+
+                &:last-of-type {
+                    margin-right: 0px;
+                }
+            }
         }
     }
 }
