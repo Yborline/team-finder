@@ -10,17 +10,40 @@ const schemaCreatePost = yup
       .string()
       .nullable()
       .min(3, "Текст повинен бути не менше 3 символів!"),
-    // tags: yup.array().of(yup.string()),
-    game: yup.string().required("Напишіть назву гри!"),
-    discord: yup.string().required("Напишіть назву гри!"),
-    telegram: yup.string().required("Напишіть назву гри!"),
+    game: yup.string().nullable().required("Напишіть назву гри!"),
+    discord: yup
+      .string()
+      .nullable()
+      .matches(/^[0-9]+$/, "Тільки цифри")
+      .min(18, "Повинно бути рівно 18 чисел")
+      .max(18, "Повинно бути рівно 18 чисел"),
+
+    telegram: yup
+      .string()
+      .nullable()
+      .matches(
+        /^[A-Za-z0-9!-/:-@[-`{-~]+$/,
+        "Тільки англійські букви та символи, крім пробілу"
+      ),
+  })
+  .transform((originalValue) => {
+    // Установка значения на null, если не введено
+    return {
+      ...originalValue,
+      discord: originalValue.discord || null,
+      telegram: originalValue.telegram || null,
+    };
   })
   .test(
     "discordOrTelegram",
     "Заповніть хоча б одне поле: Discord або Telegram",
     function (value) {
       const { discord, telegram } = value;
-      return !!discord || !!telegram;
+      // Проверка на пустоту обоих полей
+      if (!discord && !telegram) {
+        return this.createError({ path: "discordOrTelegram" });
+      }
+      return true; // Валидация успешна
     }
   );
 
