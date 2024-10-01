@@ -38,13 +38,24 @@ export interface IFormLogin {
 
 type typePost = "lookingForPlayers" | "lookingForGroup";
 
-export interface IFormCreatePost {
-  type: typePost;
-  comment?: string | null;
-  // tags?: (string | undefined)[];
-  game: string;
-  discord: string;
-  telegram: string;
+export interface ISocials {
+  discord?: number | null;
+  telegram?: string | null;
 }
+
+export interface IFormCreatePost {
+  comment?: string | null;
+  socials: ISocials;
+  type: typePost;
+  game: string;
+  discordOrTelegram?: string;
+}
+export type FieldNames =
+  | "type"
+  | "comment"
+  | "game"
+  | "discord"
+  | "telegram"
+  | "discordOrTelegram";
 
 export type possibleClassN = "transparent";
