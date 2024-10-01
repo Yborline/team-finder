@@ -1,34 +1,30 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { ButtonDiscordGoogle } from "@interfaces/form/index";
 import ButtonOtherAuth from "../ButtonOtherAuth";
 import google from "@assets/img/auth/google.png";
 import styles from "./Google.module.scss";
-import { useDispatch } from "react-redux";
 import operationsAuth from "@redux/auth/auth-operations";
 import { AppDispatch, useAppDispatch } from "@interfaces/redux";
-import { postGoogleAuth } from "@api/fetchGoogle";
-import {
-  CredentialResponse,
-  GoogleLogin,
-  useGoogleLogin,
-} from "@react-oauth/google";
+import { CredentialResponse, useGoogleLogin } from "@react-oauth/google";
 
 const Google: FC<ButtonDiscordGoogle> = ({ text }) => {
   const dispatch = useAppDispatch<AppDispatch>();
 
-  const handleSuccessGoogle = (credentialResponse: CredentialResponse) => {
-    const { credential } = credentialResponse;
-    if (credential) dispatch(operationsAuth.logInG(credential));
-  };
-  console.log(text);
+  // const handleSuccessGoogle = (credentialResponse: CredentialResponse) => {
+  //   const { credential } = credentialResponse;
+  //   if (credential) dispatch(operationsAuth.logInG(credential));
+  // };
 
   const login = useGoogleLogin({
     onSuccess: (codeResponse) => {
-      console.log(codeResponse);
-      const { code } = codeResponse;
-      if (code) dispatch(operationsAuth.logInG(code));
+      const { access_token } = codeResponse;
+      if (access_token) {
+        dispatch(operationsAuth.logInG(access_token));
+      }
     },
-    flow: "auth-code",
+    onError: (error) => {
+      console.log("Error:", error);
+    },
   });
   return (
     // <>
