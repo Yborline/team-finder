@@ -43,7 +43,7 @@ const logInG = createAsyncThunk(
   "auth/google",
   async (credentials: string, { rejectWithValue }) => {
     try {
-      const { data } = await api.post(`auth/google/${credentials}`);
+      const { data } = await api.get(`auth/google?googleToken=${credentials}`);
       console.log(data);
       // token.set(data.access_token);
       return data;
