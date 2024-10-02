@@ -50,12 +50,14 @@ export interface IFormCreatePost {
   game: string;
   discordOrTelegram?: string;
 }
+
+export type SocialKeys = "discord" | "telegram";
+
 export type FieldNames =
   | "type"
   | "comment"
   | "game"
-  | "discord"
-  | "telegram"
-  | "discordOrTelegram";
+  | "discordOrTelegram"
+  | SocialKeys;
 
 export type possibleClassN = "transparent";
