@@ -1,6 +1,8 @@
+export type typeSearch = "lookingForPlayers" | "lookingForGroup";
+
 export interface IListPlayerItem {
   name: string;
-  type: "solo" | "group";
+  type: typeSearch;
   game: string;
   tags?: string[];
   id: string;
