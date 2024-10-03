@@ -1,5 +1,7 @@
+import { ISocials, SocialKeys, typePost } from "@interfaces/form";
+
 export interface Post {
-  id: number;
+  id: string;
   name: string;
   createdByUser: {
     id: number;
@@ -8,10 +10,20 @@ export interface Post {
   };
   game: string;
   text: string;
-  tags: string;
-  createdDate: Date;
+  tags: string[];
+  socials: ISocials;
+  type: typePost;
+  createdDate?: Date;
 }
 
 export interface PostsState {
   posts: Post[];
 }
+
+export interface Filter {
+  type: "all" | typePost;
+  date: "new" | "old";
+  socials: "all" | SocialKeys;
+}
+
+export type FilterField = keyof Filter;
