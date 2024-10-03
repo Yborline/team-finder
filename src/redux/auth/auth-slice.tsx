@@ -19,7 +19,7 @@ const authSlice = createSlice({
     builder
       .addCase(authOperations.register.fulfilled, (state, { payload }) => {
         console.log(payload);
-        state.user = { name: payload.username };
+        state.user.name = payload.username;
         state.isLoading = false;
         state.notify = "Ви успішно зареєеструвалися";
         state.token = payload.access_token;
@@ -46,7 +46,7 @@ const authSlice = createSlice({
         console.log("Payload:", payload);
         // state.user = payload.data.user;
         state.isLoggedIn = true;
-        state.user = { name: payload.username };
+        state.user.name = payload.username;
         state.token = payload.access_token;
         state.isLoading = false;
       })
@@ -57,14 +57,14 @@ const authSlice = createSlice({
         state.error = true;
       })
       .addCase(authOperations.logOut.fulfilled, (state) => {
-        state.user = { name: null };
+        state.user.name = null;
         state.token = null;
         state.isLoggedIn = false;
       })
       .addCase(authOperations.logInG.fulfilled, (state, { payload }) => {
         console.log("Payload:", payload);
         state.isLoading = false;
-        state.user = { name: payload.username };
+        state.user.name = payload.username;
         state.token = payload.access_token;
         state.isLoggedIn = true;
       })
