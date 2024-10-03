@@ -2,7 +2,7 @@ import axios, { AxiosHeaders, InternalAxiosRequestConfig } from "axios";
 
 // Створення кастомного інстансу Axios
 const api = axios.create({
-  baseURL: "http://95.135.51.126/api/",
+  baseURL: "http://37.53.57.178/api/",
   // withCredentials: true,
 });
 
