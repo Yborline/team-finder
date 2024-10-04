@@ -2,48 +2,51 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import postsOperations from "./posts-operations";
 import { IErrorResponse } from "@interfaces/slicer";
 import { Filter, Post } from "@interfaces/posts";
+import { IPosts } from "@interfaces/redux";
 
 const mokkaPlayers: Post[] = [
   {
     id: "11112111",
-    name: "LLLLLLLLLLLLLLLLLLLL",
+    name: "LLLLLLLLLLLLLLLLLLLL1",
     createdByUser: {
-      id: 1, // Задайте унікальний id для користувача
+      id: 1,
       name: "User1",
-      email: "user1@example.com", // Додайте email
+      email: "user1@example.com",
     },
     game: "dota 2",
     text: "dssssssssssssssasasas",
-    tags: ["tags", "mid"], // Об'єднайте теги в рядок
+    tags: ["tags", "mid"],
     socials: {
       discord: null,
       telegram: "yyyyyy",
     },
     type: "lookingForGroup",
-    createdDate: new Date(), // Якщо потрібно, задайте дату створення
+    createdDate: new Date().toString(),
   },
   {
     id: "123132132",
-    name: "Lol",
+    name: "Lol2",
     createdByUser: {
       id: 2,
       name: "User2",
       email: "user2@example.com",
     },
     game: "dota 2",
-    text: "", // Додайте текст за потреби
+    text: "laxatron",
     tags: ["tags", "mid"],
     socials: {
       discord: "123456789012345678",
       telegram: "yyyyyy",
     },
     type: "lookingForPlayers",
-    createdDate: new Date(),
+    createdDate: new Date(
+      new Date().setHours(new Date().getHours() - 1)
+    ).toString(),
   },
-  // Додайте інші об'єкти аналогічно
+
   {
     id: "12313213",
-    name: "Lol",
+    name: "Lol3",
     createdByUser: {
       id: 3,
       name: "User3",
@@ -57,32 +60,42 @@ const mokkaPlayers: Post[] = [
       telegram: null,
     },
     type: "lookingForPlayers",
-    createdDate: new Date(),
+    createdDate: new Date(
+      new Date().setHours(new Date().getHours() - 2)
+    ).toString(),
   },
 ];
 
-const initialState = {
+export const filterStateDefault: Filter = {
+  type: "all",
+  date: "new",
+  socials: "all",
+};
+
+const initialState: IPosts = {
   posts: mokkaPlayers,
   loading: false,
   error: false,
   notify: null as string | null,
-  filter: {
-    type: "all",
-    date: "new",
-    socials: "all",
-  },
+  filter: filterStateDefault,
 };
 
 const postsSlice = createSlice({
   name: "posts",
   initialState,
   reducers: {
-    setFilter(
-      state,
-      actions: PayloadAction<{ field: keyof Filter; value: string }>
+    setFilter<K extends keyof Filter>(
+      state: IPosts,
+      actions: PayloadAction<{
+        field: K;
+        value: Filter[K];
+      }>
     ) {
       const { field, value } = actions.payload;
       state.filter[field] = value;
+    },
+    resetFilter(state) {
+      state.filter = filterStateDefault;
     },
   },
   extraReducers: (builder) => {
@@ -108,4 +121,4 @@ const postsSlice = createSlice({
 });
 
 export default postsSlice.reducer;
-export const { setFilter } = postsSlice.actions;
+export const { setFilter, resetFilter } = postsSlice.actions;
