@@ -1,6 +1,7 @@
 import { FC, useEffect } from "react";
 import { createPortal } from "react-dom";
 import styles from "./Modal.module.scss";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface IModalProps {
   close: () => void;
@@ -35,9 +36,17 @@ const Modal: FC<IModalProps> = ({ close, children }) => {
   });
 
   return createPortal(
-    <div className={styles.backdrop} onClick={(e) => handleBackdropClick(e)}>
+    <motion.div
+      key="backdropModal"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+      className={styles.backdrop}
+      onClick={(e) => handleBackdropClick(e)}
+    >
       {children}
-    </div>,
+    </motion.div>,
     modalRoot
   );
 };
