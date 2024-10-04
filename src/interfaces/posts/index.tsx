@@ -13,7 +13,7 @@ export interface Post {
   tags: string[];
   socials: ISocials;
   type: typePost;
-  createdDate?: Date;
+  createdDate?: string;
 }
 
 export interface PostsState {

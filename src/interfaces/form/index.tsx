@@ -36,10 +36,10 @@ export interface IFormLogin {
   password: string;
 }
 
-type typePost = "lookingForPlayers" | "lookingForGroup";
+export type typePost = "lookingForPlayers" | "lookingForGroup";
 
 export interface ISocials {
-  discord?: number | null;
+  discord?: string | null;
   telegram?: string | null;
 }
 
