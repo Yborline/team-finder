@@ -4,23 +4,30 @@ import { BsSearch } from "react-icons/bs";
 import { IoFilterSharp } from "react-icons/io5";
 import { useState } from "react";
 import FilterForm from "../Form/FilterForm/FilterForm";
-import ModalBackdropAuth from "@components/shared/Modal/ModalBackdropAuth/ModalBackdropAuth";
 import Modal from "@components/shared/Modal/Modal";
+import { AnimatePresence } from "framer-motion";
+import { useSelector } from "react-redux";
+import { getModal } from "@redux/modal/modal-selector";
+import { useAppDispatch } from "@interfaces/redux";
+import { setModal } from "@redux/modal/modal-slice";
+import { getCountChangedFilter } from "@redux/posts/posts-selector";
 
 const Filter = () => {
-  const [showModal, setShowModal] = useState(false);
-  const [isClosing, setIsClosing] = useState(false);
+  const showModal = useSelector(getModal);
+  const countFilter = useSelector(getCountChangedFilter);
+  const dispatch = useAppDispatch();
+  const [isOpen, setIsOpen] = useState(true);
 
   const toggleModal = () => {
-    if (showModal) {
-      setIsClosing(true);
+    if (showModal === "filter") {
+      setIsOpen(false);
 
       setTimeout(() => {
-        setShowModal(false);
-        setIsClosing(false);
+        dispatch(setModal(""));
+        setIsOpen(true);
       }, 300);
     } else {
-      setShowModal(true);
+      dispatch(setModal("filter"));
     }
   };
   return (
@@ -36,12 +43,17 @@ const Filter = () => {
         <IconContext.Provider value={{ className: styles.iconFilter }}>
           <IoFilterSharp />
         </IconContext.Provider>
+        {countFilter > 0 && (
+          <div className={styles.filterCount}>{countFilter}</div>
+        )}
       </button>
-      {showModal && (
-        <Modal close={toggleModal}>
-          <FilterForm showModal={!isClosing} />
-        </Modal>
-      )}
+      <AnimatePresence>
+        {showModal === "filter" && (
+          <Modal close={toggleModal}>
+            <FilterForm showModal={isOpen} />
+          </Modal>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
