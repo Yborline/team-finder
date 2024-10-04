@@ -1,15 +1,16 @@
-.boxForm {
+.boxFormFilter {
     box-sizing: border-box;
     position: absolute;
     height: 100%;
     width: 100%;
     background: var(--team-background);
     padding: 30px 20px;
+    color: var(--white);
 }
 
 
 @media screen and (min-width: 400px) {
-    .boxForm {
+    .boxFormFilter {
         width: 340px;
 
         .boxOneFilter {
