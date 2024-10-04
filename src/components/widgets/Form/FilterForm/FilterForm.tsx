@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import styles from "./FilterForm.module.scss";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAppDispatch } from "@interfaces/redux";
-import { setFilter } from "@redux/posts/posts-slice";
+import { resetFilter, setFilter } from "@redux/posts/posts-slice";
 import { FilterField } from "@interfaces/posts";
 import { useSelector } from "react-redux";
 import {
@@ -32,6 +32,10 @@ const FilterForm: FC<FilterFormProps> = ({ showModal }) => {
     console.log(event.target.id);
     const { id, value } = event.target;
     dispatch(setFilter({ field: id as FilterField, value }));
+  };
+
+  const handleResetFilter = () => {
+    dispatch(resetFilter());
   };
 
   return (
@@ -82,7 +86,9 @@ const FilterForm: FC<FilterFormProps> = ({ showModal }) => {
               </select>
             </div>
 
-            <button type="submit">Apply Filter</button>
+            <button onClick={handleResetFilter} type="button">
+              Скинути налаштування
+            </button>
           </form>
         </motion.div>
       )}
