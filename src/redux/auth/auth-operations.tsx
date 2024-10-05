@@ -99,7 +99,7 @@ const fetchCurrentUser = createAsyncThunk(
         .find((row) => row.startsWith("refreshToken"))
         ?.split("=")[1];
       if (tokenRefresh) thunkAPI.dispatch(fetchRefreshToken(tokenRefresh));
-      return thunkAPI.rejectWithValue(error);
+      else return thunkAPI.rejectWithValue(error);
     }
   }
 );
