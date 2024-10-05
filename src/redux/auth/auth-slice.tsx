@@ -80,19 +80,23 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.isLoggedIn = false;
         state.isLoading = false;
+      })
+      .addCase(
+        authOperations.fetchCurrentUser.fulfilled,
+        (state, { payload }) => {
+          state.user.name = payload.username;
+          state.isLoggedIn = true;
+        }
+      )
+      .addCase(authOperations.fetchCurrentUser.rejected, (state) => {
+        state.error = true;
+        state.isLoading = false;
+      })
+      .addCase(authOperations.fetchCurrentUser.pending, (state) => {
+        state.error = false;
+        state.isLoading = true;
+        state.isLoggedIn = false;
       });
-    // .addCase(
-    //   authOperations.fetchCurrentUser.fulfilled,
-    //   (state, { payload }) => {
-    //     state.user = payload;
-    //     state.isLoggedIn = true;
-    //     state.isFetchingCurrentUser = false;
-    //   }
-    // );
-    // .addCase(authOperations.fetchCurrentUser.rejected, (state,  => {
-    //   state.isFetchingCurrentUser = false;
-    //   state.error = error.message ?? "Unknown error"; // Зберігаємо повідомлення про помилку
-    // });
   },
 });
 
