@@ -5,6 +5,7 @@ import { filterStateDefault } from "./posts-slice";
 
 export const getPosts = (state: IRootState) => state.posts.posts;
 export const getFilterObj = (state: IRootState) => state.posts.filter;
+export const getFilterInput = (state: IRootState) => state.posts.filter.input;
 export const getFilterType = (state: IRootState) => state.posts.filter.type;
 export const getFilterDate = (state: IRootState) => state.posts.filter.date;
 export const getFilterSocials = (state: IRootState) =>
@@ -53,5 +54,18 @@ export const getSelectFilteredPosts = createSelector(
     });
 
     return sortedPosts;
+  }
+);
+
+export const getAllFilterPosts = createSelector(
+  [getSelectFilteredPosts, getFilterInput],
+  (posts, input) => {
+    return posts.filter(({ game, tags, text }) => {
+      return (
+        game.toLowerCase().includes(input) ||
+        tags.some((tag) => tag.toLowerCase().includes(input)) ||
+        text.toLowerCase().includes(input)
+      );
+    });
   }
 );
