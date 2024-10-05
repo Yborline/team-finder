@@ -89,10 +89,25 @@ const authSlice = createSlice({
         }
       )
       .addCase(authOperations.fetchCurrentUser.rejected, (state) => {
-        state.error = true;
         state.isLoading = false;
       })
       .addCase(authOperations.fetchCurrentUser.pending, (state) => {
+        state.error = false;
+        state.isLoading = true;
+        state.isLoggedIn = false;
+      })
+      .addCase(
+        authOperations.fetchRefreshToken.fulfilled,
+        (state, { payload }) => {
+          state.user.name = payload.username;
+          state.isLoggedIn = true;
+        }
+      )
+      .addCase(authOperations.fetchRefreshToken.rejected, (state) => {
+        state.error = true;
+        state.isLoading = false;
+      })
+      .addCase(authOperations.fetchRefreshToken.pending, (state) => {
         state.error = false;
         state.isLoading = true;
         state.isLoggedIn = false;
