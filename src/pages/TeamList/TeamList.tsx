@@ -5,12 +5,15 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { AppDispatch, useAppDispatch } from "@interfaces/redux";
 import postsOperations from "@redux/posts/posts-operations";
-import { getSelectFilteredPosts } from "@redux/posts/posts-selector";
+import {
+  getAllFilterPosts,
+  getSelectFilteredPosts,
+} from "@redux/posts/posts-selector";
 // import { resetFilter } from "@redux/posts/posts-slice";
 
 const TeamList = () => {
   const dispatch = useAppDispatch<AppDispatch>();
-  const posts = useSelector(getSelectFilteredPosts);
+  const posts = useSelector(getAllFilterPosts);
   useEffect(() => {
     dispatch(postsOperations.getPosts());
 
