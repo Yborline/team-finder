@@ -24,6 +24,7 @@ export interface Filter {
   type: "all" | typePost;
   date: "new" | "old";
   socials: "all" | SocialKeys;
+  input: string;
 }
 
 export type FilterField = keyof Filter;
