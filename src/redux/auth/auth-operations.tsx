@@ -4,11 +4,17 @@ import api from "@api/api";
 // import axios from "axios";
 
 const token = {
-  set(token: string) {
-    document.cookie = `token=${token}; path=/; secure; SameSite=Strict`;
+  setAccessToken(accessToken: string) {
+    document.cookie = `accessToken=${accessToken}; path=/; secure; SameSite=Strict`;
+  },
+  setRefreshToken(refreshToken: string) {
+    document.cookie = `refreshToken=${refreshToken}; path=/; secure; SameSite=Strict`;
   },
   unset() {
-    document.cookie = "token=; Max-Age=0; path=/; secure; SameSite=Strict";
+    document.cookie =
+      "accessToken=; Max-Age=0; path=/; secure; SameSite=Strict";
+    document.cookie =
+      "refreshToken=; Max-Age=0; path=/; secure; SameSite=Strict";
   },
 };
 // axios.defaults.baseURL = "http://95.135.51.126/api/";
@@ -18,7 +24,8 @@ const register = createAsyncThunk(
   async (credentials: IFormRegisterSend, thunkAPI) => {
     try {
       const { data } = await api.post("auth/register", credentials);
-      token.set(data.token);
+      token.setAccessToken(data.access_token);
+      token.setRefreshToken(data.refresh_token);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -32,7 +39,8 @@ const logIn = createAsyncThunk(
     try {
       const { data } = await api.post("auth/login", credentials);
 
-      token.set(data.access_token);
+      token.setAccessToken(data.access_token);
+      token.setRefreshToken(data.refresh_token);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -45,7 +53,8 @@ const logInG = createAsyncThunk(
     try {
       const { data } = await api.get(`auth/google?googleToken=${credentials}`);
       console.log(data);
-      // token.set(data.access_token);
+      token.setAccessToken(data.access_token);
+      token.setRefreshToken(data.refresh_token);
       return data;
     } catch (error) {
       return rejectWithValue(error);
@@ -62,20 +71,34 @@ const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   }
 });
 
+const fetchRefreshToken = createAsyncThunk(
+  "auth/refreshToken",
+  async (tokenRefresh: string, thunkApi) => {
+    try {
+      const { data } = await api.get(
+        `auth/refresh?refreshToken=${tokenRefresh}`
+      );
+      token.setAccessToken(data.access_token);
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error);
+    }
+  }
+);
+
 const fetchCurrentUser = createAsyncThunk(
   "auth/refresh",
   async (_, thunkAPI) => {
-    // const state = thunkAPI.getState();
-    // const persistedToken = state.auth.token;
-    // if (persistedToken === null) {
-    //   return thunkAPI.rejectWithValue();
-    // }
-    // token.set(persistedToken);
     try {
       const { data } = await api.get("/users/getmyself");
       console.log(data);
       return data;
     } catch (error) {
+      const tokenRefresh = document.cookie
+        .split("; ")
+        .find((row) => row.startsWith("refreshToken"))
+        ?.split("=")[1];
+      if (tokenRefresh) thunkAPI.dispatch(fetchRefreshToken(tokenRefresh));
       return thunkAPI.rejectWithValue(error);
     }
   }
@@ -87,6 +110,7 @@ const operationsAuth = {
   logIn,
   fetchCurrentUser,
   logInG,
+  fetchRefreshToken,
 };
 
 export default operationsAuth;
