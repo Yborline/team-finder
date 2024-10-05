@@ -11,6 +11,7 @@ import { getModal } from "@redux/modal/modal-selector";
 import { useAppDispatch } from "@interfaces/redux";
 import { setModal } from "@redux/modal/modal-slice";
 import { getCountChangedFilter } from "@redux/posts/posts-selector";
+import { setInputFilter } from "@redux/posts/posts-slice";
 
 const Filter = () => {
   const showModal = useSelector(getModal);
@@ -30,10 +31,19 @@ const Filter = () => {
       dispatch(setModal("filter"));
     }
   };
+
+  const handleChangeInput = (value: string) => {
+    dispatch(setInputFilter(value.toLowerCase()));
+  };
   return (
     <div className={styles.boxFilter}>
       <div className={styles.boxInput}>
-        <input className={styles.inputFilter} />
+        <input
+          onInput={(e: React.ChangeEvent<HTMLInputElement>) =>
+            handleChangeInput(e.target.value)
+          }
+          className={styles.inputFilter}
+        />
         <IconContext.Provider value={{ className: styles.iconSearch }}>
           <BsSearch />
         </IconContext.Provider>
