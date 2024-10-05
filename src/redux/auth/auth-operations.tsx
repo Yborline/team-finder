@@ -72,7 +72,7 @@ const fetchCurrentUser = createAsyncThunk(
     // }
     // token.set(persistedToken);
     try {
-      const { data } = await api.get("/auth/current");
+      const { data } = await api.get("/users/getmyself");
       console.log(data);
       return data;
     } catch (error) {
