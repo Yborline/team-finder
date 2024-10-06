@@ -10,8 +10,9 @@ api.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     const token = document.cookie
       .split("; ")
-      .find((row) => row.startsWith("setAccessToken="))
+      .find((row) => row.startsWith("accessToken="))
       ?.split("=")[1];
+
     if (token) {
       if (!config.headers) {
         config.headers = new AxiosHeaders();
