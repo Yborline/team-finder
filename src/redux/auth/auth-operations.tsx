@@ -64,7 +64,7 @@ const logInG = createAsyncThunk(
 
 const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
-    await api.post("auth/logout");
+    await api.get("users/logout");
     token.unset();
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
