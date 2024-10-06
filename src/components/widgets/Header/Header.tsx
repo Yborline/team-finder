@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import styles from "./Header.module.scss";
 import { useTranslation } from "react-i18next";
 import LanguageButton from "@components/shared/LanguageButton/LanguageButton";
-import { useState } from "react";
 import Modal from "@components/shared/Modal/Modal";
 import Register from "../Form/Register/Register";
 import Login from "../Form/Login/Login";
@@ -14,6 +13,7 @@ import { AppDispatch, useAppDispatch } from "@interfaces/redux";
 import { setModal } from "@redux/modal/modal-slice";
 import { ModalType } from "@interfaces/modal/intex";
 import "react-toastify/dist/ReactToastify.css";
+import operationsAuth from "@redux/auth/auth-operations";
 // import ThemeToggle from "@components/shared/ThemeToggle/ThemeToggle";
 
 export const Header = () => {
@@ -36,7 +36,12 @@ export const Header = () => {
           <LanguageButton />
         </div>
         {loggedIn ? (
-          <ButtonUser />
+          <>
+            <ButtonUser />
+            <button onClick={() => dispatch(operationsAuth.logOut())}>
+              logout
+            </button>
+          </>
         ) : (
           <div className={styles.boxRight}>
             <button
