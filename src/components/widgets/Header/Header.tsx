@@ -14,6 +14,7 @@ import { setModal } from "@redux/modal/modal-slice";
 import { ModalType } from "@interfaces/modal/intex";
 import "react-toastify/dist/ReactToastify.css";
 import operationsAuth from "@redux/auth/auth-operations";
+import ButtonExit from "@components/shared/Button/ButtonExit/ButtonExit";
 // import ThemeToggle from "@components/shared/ThemeToggle/ThemeToggle";
 
 export const Header = () => {
@@ -36,12 +37,10 @@ export const Header = () => {
           <LanguageButton />
         </div>
         {loggedIn ? (
-          <>
+          <div className={styles.boxUser}>
             <ButtonUser />
-            <button onClick={() => dispatch(operationsAuth.logOut())}>
-              logout
-            </button>
-          </>
+            <ButtonExit onClick={() => dispatch(operationsAuth.logOut())} />
+          </div>
         ) : (
           <div className={styles.boxRight}>
             <button

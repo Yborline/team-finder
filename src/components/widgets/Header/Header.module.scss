@@ -17,6 +17,12 @@
         align-items: center;
         justify-content: space-between;
 
+        .boxUser {
+            display: flex;
+            gap: 40px;
+            align-items: flex-end;
+        }
+
         .boxLeft {
             display: flex;
             align-items: center;
