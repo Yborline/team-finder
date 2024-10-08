@@ -1,0 +1,15 @@
+    .boxOneFilter {
+        font-size: 20px;
+        display: flex;
+        justify-content: space-between;
+
+        .selectFilter {
+            border-radius: 8px;
+            height: 25px;
+            width: 130px;
+            appearance: none;
+
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+    }
