@@ -1,11 +1,15 @@
-import { getUserName } from "@redux/auth/auth-selector";
-import React from "react";
-import { useSelector } from "react-redux";
+import { FaUserCircle } from "react-icons/fa";
+import { IconContext } from "react-icons";
+import styles from "./ButtonUser.module.scss";
 
 const ButtonUser = () => {
-  const nameUser = useSelector(getUserName);
+  // const nameUser = useSelector(getUserName);
 
-  return <button>{nameUser}</button>;
+  return (
+    <IconContext.Provider value={{ className: styles.userButton }}>
+      <FaUserCircle />
+    </IconContext.Provider>
+  );
 };
 
 export default ButtonUser;
