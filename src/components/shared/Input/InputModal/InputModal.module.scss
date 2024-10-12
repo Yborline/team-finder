@@ -85,7 +85,7 @@
 
         &:hover,
         &:active {
-            filter: drop-shadow(0 0 1.5px var(--white));
+            filter: drop-shadow(var(--filterShdowIcon));
         }
     }
 }
