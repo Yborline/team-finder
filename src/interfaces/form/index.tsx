@@ -44,6 +44,7 @@ export interface ISocials {
 }
 
 export interface IFormCreatePost {
+  title: string;
   comment?: string | null;
   socials: ISocials;
   type: typePost;
