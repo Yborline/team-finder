@@ -9,36 +9,55 @@ interface Option {
 
 interface IFilterSelect {
   label: string;
-  value: string;
+  value: Option | undefined;
   options: { value: string; label: string }[];
-  onChange: (value: Option | null, field: string) => void;
+  onChange: (value: Option, field: string) => void;
   id: string;
   className: string;
 }
 
 const SelectFilter: FC<IFilterSelect> = ({ onChange, value, id, options }) => {
+  const handleChange = (option: Option | null) => {
+    if (option) onChange(option, id); // Передаємо значення або null
+  };
+
   return (
     <Select
+      styles={{
+        control: (baseStyles, state) => ({
+          ...baseStyles,
+          background: "var(--filter-background)",
+          cursor: "pointer",
+          outline: "none",
+          border: "none",
+          boxShadow: state.isFocused
+            ? "var(--filter-box-shadow-hover)"
+            : "none", // Тінь при фокусі
+          "&:focus": {
+            borderColor: "var(--white)",
+            boxShadow: "var(--filter-box-shadow-hover)",
+          },
+          "&:hover": {
+            boxShadow: "var(--filter-box-shadow-hover)",
+          },
+        }),
+      }}
+      classNamePrefix="select"
+      className={styles.selectFilter}
+      classNames={{
+        option: (state) =>
+          state.isSelected
+            ? styles.optionFiFilterSelect
+            : state.isFocused
+            ? styles.optionFilterHover
+            : styles.optionFilter,
+      }}
+      value={value}
       id={id}
-      onChange={(option) => onChange(option, id)}
+      onChange={handleChange}
       defaultValue={options[0]}
       options={options}
     />
-    // <div className={styles.boxOneFilter}>
-    //   <label htmlFor="type">{label}:</label>
-    //   <select
-    //     className={styles.selectFilter}
-    //     value={value}
-    //     onChange={onChange}
-    //     id={id}
-    //   >
-    //     {options.map((option) => (
-    //       <option key={option.value} value={option.value}>
-    //         {option.label}
-    //       </option>
-    //     ))}
-    //   </select>
-    // </div>
   );
 };
 
