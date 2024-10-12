@@ -6,7 +6,7 @@ const initialState = {
   user: { name: null },
   token: null,
   isLoggedIn: false,
-  isLoading: false,
+  isLoading: true,
   error: false,
   notify: null as string | null,
 };
@@ -77,14 +77,13 @@ const authSlice = createSlice({
       })
       .addCase(authOperations.logInG.rejected, (state, { payload }) => {
         console.log("Payload:", payload);
-        state.isLoggedIn = true;
         state.isLoggedIn = false;
         state.isLoading = false;
       })
       .addCase(
         authOperations.fetchCurrentUser.fulfilled,
         (state, { payload }) => {
-          state.user.name = payload.username;
+          state.user.name = payload.name;
           state.isLoggedIn = true;
         }
       )
@@ -99,7 +98,7 @@ const authSlice = createSlice({
       .addCase(
         authOperations.fetchRefreshToken.fulfilled,
         (state, { payload }) => {
-          state.user.name = payload.username;
+          state.user.name = payload.name;
           state.isLoggedIn = true;
         }
       )
