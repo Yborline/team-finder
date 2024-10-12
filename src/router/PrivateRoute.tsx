@@ -1,4 +1,4 @@
-import { getLoggedIn } from "@redux/auth/auth-selector";
+import { getLoading, getLoggedIn } from "@redux/auth/auth-selector";
 import { FC } from "react";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
@@ -9,7 +9,8 @@ interface IPropsPrivateRouter {
 
 const PrivateRoute: FC<IPropsPrivateRouter> = ({ children }) => {
   const isLoggedIn = useSelector(getLoggedIn);
-  if (!isLoggedIn) {
+  const isLoading = useSelector(getLoading);
+  if (!isLoggedIn && !isLoading) {
     return <Navigate to="/" />;
   }
 
