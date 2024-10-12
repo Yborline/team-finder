@@ -1,5 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import api from "@api/api";
+import { notify } from "@components/widgets/Tostify/Tostify";
+import { IFormCreatePost } from "@interfaces/form";
 
 const getPosts = createAsyncThunk(
   "post/list",
@@ -13,10 +15,11 @@ const getPosts = createAsyncThunk(
   }
 );
 const addPost = createAsyncThunk(
-  "post/item",
-  async (credentials: string, thunkAPI) => {
+  "post/createPost",
+  async (credentials: IFormCreatePost, thunkAPI) => {
     try {
-      const { data } = await api.get(`post/${credentials}`);
+      const { data } = await api.post(`post/add`, credentials);
+      notify("success", "Ваш пост відправлено");
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
