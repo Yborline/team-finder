@@ -10,6 +10,8 @@ import {
   getFilterSocials,
   getFilterType,
 } from "@redux/posts/posts-selector";
+import SelectFilter from "@components/shared/Select/Filter/SelectFilter";
+import ButtonStandart from "@components/shared/Button/ButtonStandart/ButtonStandart";
 
 interface FilterForm {
   search: string;
@@ -21,6 +23,26 @@ interface FilterFormProps {
   showModal: boolean;
 }
 
+interface Option {
+  value: string;
+  label: string; // або будь-який інший тип, який вам потрібен
+}
+
+const optionType = [
+  { value: "all", label: "Всі картки" },
+  { value: "lookingForPlayers", label: "Пошук гравця" },
+  { value: "lookingForGroup", label: "Пошук команди" },
+];
+const optionDate = [
+  { value: "new", label: "New Date" },
+  { value: "old", label: "Old Date" },
+];
+const optionSocials = [
+  { value: "all", label: "All" },
+  { value: "discord", label: "Discord" },
+  { value: "telegram", label: "Telegram" },
+];
+
 const FilterForm: FC<FilterFormProps> = ({ showModal }) => {
   const filterType = useSelector(getFilterType);
   const filterDate = useSelector(getFilterDate);
@@ -28,10 +50,14 @@ const FilterForm: FC<FilterFormProps> = ({ showModal }) => {
 
   const dispatch = useAppDispatch();
 
-  const handleChangeFilter = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log(event.target.id);
-    const { id, value } = event.target;
-    dispatch(setFilter({ field: id as FilterField, value }));
+  const handleChangeFilter = (option: Option, field: string) => {
+    console.log(field);
+    console.log(option);
+    const { value } = option;
+
+    // console.log(event.target.id);
+    // const { id, value } = event.target;
+    dispatch(setFilter({ field: field as FilterField, value }));
   };
 
   const handleResetFilter = () => {
@@ -50,45 +76,35 @@ const FilterForm: FC<FilterFormProps> = ({ showModal }) => {
           transition={{ duration: 0.3 }}
         >
           <form className={styles.FilterFormBox}>
-            <div className={styles.boxOneFilter}>
-              <label htmlFor="type">Type:</label>
-              <select
-                value={filterType}
-                onChange={handleChangeFilter}
-                id="type"
-              >
-                <option value="all">Всі картки</option>
-                <option value="lookingForPlayers">Пошук гравця</option>
-                <option value="lookingForGroup">Пошук команди</option>
-              </select>
-            </div>
-            <div className={styles.boxOneFilter}>
-              <label htmlFor="date">Sort Date:</label>
-              <select
-                value={filterDate}
-                onChange={handleChangeFilter}
-                id="date"
-              >
-                <option value="new">New Date</option>
-                <option value="old">Old Date</option>
-              </select>
-            </div>
-            <div className={styles.boxOneFilter}>
-              <label htmlFor="socials">Connection:</label>
-              <select
-                value={filterSocials}
-                onChange={handleChangeFilter}
-                id="socials"
-              >
-                <option value="all">all</option>
-                <option value="discord">Discord</option>
-                <option value="telegram">Telegram</option>
-              </select>
-            </div>
+            <SelectFilter
+              label="Type"
+              value={optionType.find(({ value }) => value === filterType)}
+              onChange={handleChangeFilter}
+              id="type"
+              className={styles.boxOneFilter}
+              options={optionType}
+            />
 
-            <button onClick={handleResetFilter} type="button">
+            <SelectFilter
+              label="Sort Date"
+              value={optionDate.find(({ value }) => value === filterDate)}
+              onChange={handleChangeFilter}
+              id="date"
+              className={styles.boxOneFilter}
+              options={optionDate}
+            />
+
+            <SelectFilter
+              label="Connection"
+              value={optionSocials.find(({ value }) => value === filterSocials)}
+              onChange={handleChangeFilter}
+              id="socials"
+              className={styles.boxOneFilter}
+              options={optionSocials}
+            />
+            <ButtonStandart onClick={handleResetFilter}>
               Скинути налаштування
-            </button>
+            </ButtonStandart>
           </form>
         </motion.div>
       )}
