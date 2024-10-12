@@ -1,6 +1,7 @@
 import * as yup from "yup";
 
 const schemaCreatePost = yup.object({
+  title: yup.string().required("Це поле обов'язкове!"),
   type: yup
     .string()
     .oneOf(["lookingForPlayers", "lookingForGroup"])
@@ -24,12 +25,7 @@ const schemaCreatePost = yup.object({
 
     if (value && (value.discord || value.telegram)) {
       return yup.object({
-        discord: yup
-          .string()
-          .nullable()
-          .min(18, "Потрібно 18 чисел вашого айді")
-          .max(18, "Потрібно 18 чисел вашого айді")
-          .matches(/^[0-9]+$/, "Тільки цифри"),
+        discord: yup.string().nullable().max(25, "Максимум 25 символів"),
         telegram: yup
           .string()
           .nullable()
