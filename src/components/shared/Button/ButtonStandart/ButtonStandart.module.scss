@@ -1,0 +1,12 @@
+.buttonStandart {
+
+    height: 36px;
+    width: 100%;
+    background: var(--filter-background);
+    transition: all 0.3s ease;
+
+    &:hover {
+        box-shadow: var(--filter-box-shadow-hover);
+    }
+
+}
