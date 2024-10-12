@@ -13,7 +13,7 @@ const mokkaPlayers: Post[] = [
       name: "User1",
       email: "user1@example.com",
     },
-    game: "dota 2",
+    game: "punk",
     text: "dssssssssssssssasasas",
     tags: ["tags", "mid"],
     socials: {
@@ -33,7 +33,7 @@ const mokkaPlayers: Post[] = [
     },
     game: "dota 2",
     text: "laxatron",
-    tags: ["tags", "mid"],
+    tags: ["sock", "mid"],
     socials: {
       discord: "123456789012345678",
       telegram: "yyyyyy",
@@ -52,9 +52,9 @@ const mokkaPlayers: Post[] = [
       name: "User3",
       email: "user3@example.com",
     },
-    game: "dota 2",
+    game: "dota 3",
     text: "",
-    tags: ["tags", "mid"],
+    tags: ["dick", "mid"],
     socials: {
       discord: "123456789012345678",
       telegram: null,
@@ -70,6 +70,7 @@ export const filterStateDefault: Filter = {
   type: "all",
   date: "new",
   socials: "all",
+  input: "",
 };
 
 const initialState: IPosts = {
@@ -94,6 +95,9 @@ const postsSlice = createSlice({
       const { field, value } = actions.payload;
       state.filter[field] = value;
     },
+    setInputFilter(state: IPosts, { payload }) {
+      state.filter.input = payload;
+    },
     resetFilter(state) {
       state.filter = filterStateDefault;
     },
@@ -115,10 +119,19 @@ const postsSlice = createSlice({
         state.notify = (payload as IErrorResponse).response?.data;
       })
       .addCase(postsOperations.addPost.fulfilled, (state, { payload }) => {
-        state.posts = [payload.post, ...state.posts];
+        // state.posts = [payload.post, ...state.posts];
+        state.loading = false;
+      })
+      .addCase(postsOperations.addPost.pending, (state, { payload }) => {
+        // state.posts = [payload.post, ...state.posts];
+        state.loading = true;
+      })
+      .addCase(postsOperations.addPost.rejected, (state, { payload }) => {
+        // state.posts = [payload.post, ...state.posts];
+        state.loading = false;
       });
   },
 });
 
 export default postsSlice.reducer;
-export const { setFilter, resetFilter } = postsSlice.actions;
+export const { setFilter, resetFilter, setInputFilter } = postsSlice.actions;
