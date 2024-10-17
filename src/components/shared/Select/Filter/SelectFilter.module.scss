@@ -1,15 +1,29 @@
-    .boxOneFilter {
-        font-size: 20px;
-        display: flex;
-        justify-content: space-between;
+.selectFilter {
+    &__control {
+        background: var(--filter-background);
+    }
 
-        .selectFilter {
-            border-radius: 8px;
-            height: 25px;
-            width: 130px;
-            appearance: none;
 
-            -webkit-appearance: none;
-            -moz-appearance: none;
+    .optionFilter {
+        background: var(--filter-background);
+        transition: all 0.3s ease;
+        color: var(--black)
+    }
+
+    .optionFilterHover {
+
+        color: var(--black)
+    }
+
+    .optionFiFilterSelect {
+        background: var(--select-backgroundSelect);
+
+        &:hover {
+
+
+            &:focus {
+                background: var(--filter-background);
+            }
         }
     }
+}
