@@ -6,7 +6,7 @@ import { IPosts } from "@interfaces/redux";
 
 const mokkaPlayers: Post[] = [
   {
-    id: "11112111",
+    id: 1,
     name: "LLLLLLLLLLLLLLLLLLLL1",
     createdByUser: {
       id: 1,
@@ -24,7 +24,7 @@ const mokkaPlayers: Post[] = [
     createdDate: new Date().toString(),
   },
   {
-    id: "123132132",
+    id: 2,
     name: "Lol2",
     createdByUser: {
       id: 2,
@@ -45,7 +45,7 @@ const mokkaPlayers: Post[] = [
   },
 
   {
-    id: "12313213",
+    id: 3,
     name: "Lol3",
     createdByUser: {
       id: 3,
@@ -106,7 +106,7 @@ const postsSlice = createSlice({
     builder
       .addCase(postsOperations.getPosts.fulfilled, (state, { payload }) => {
         console.log(payload);
-        state.posts = payload.posts;
+        state.posts = payload;
         state.loading = false;
       })
       .addCase(postsOperations.getPosts.pending, (state) => {
