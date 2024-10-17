@@ -6,6 +6,12 @@
     background: var(--team-background);
     padding: 30px 20px;
     color: var(--white);
+
+    .FilterFormBox {
+        display: flex;
+        flex-direction: column;
+        gap: 15px
+    }
 }
 
 
