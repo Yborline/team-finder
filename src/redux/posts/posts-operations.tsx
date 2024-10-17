@@ -5,9 +5,9 @@ import { IFormCreatePost } from "@interfaces/form";
 
 const getPosts = createAsyncThunk(
   "post/list",
-  async (credentials, thunkAPI) => {
+  async (credentials: number, thunkAPI) => {
     try {
-      const { data } = await api.get(`post/list`);
+      const { data } = await api.get(`post/list/${credentials}`);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
