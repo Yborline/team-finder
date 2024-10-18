@@ -5,6 +5,7 @@ import TeamList from "@pages/TeamList/TeamList";
 import Post from "@pages/TeamList/Post/Post";
 import Create from "@pages/Create/Create";
 import PrivateRoute from "./PrivateRoute";
+import UserPage from "@pages/UserPage/UserPage";
 
 export const router = createBrowserRouter([
   {
@@ -28,6 +29,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Create />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/user",
+        element: (
+          <PrivateRoute>
+            <UserPage />
           </PrivateRoute>
         ),
       },
