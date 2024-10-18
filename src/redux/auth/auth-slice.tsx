@@ -5,7 +5,7 @@ import { IErrorResponse } from "@interfaces/slicer";
 const initialState = {
   user: { name: null },
   token: null,
-  isLoggedIn: false,
+  isLoggedIn: true,
   isLoading: true,
   error: false,
   notify: null as string | null,
@@ -93,7 +93,7 @@ const authSlice = createSlice({
       .addCase(authOperations.fetchCurrentUser.pending, (state) => {
         state.error = false;
         state.isLoading = true;
-        state.isLoggedIn = false;
+        // state.isLoggedIn = false;
       })
       .addCase(
         authOperations.fetchRefreshToken.fulfilled,
@@ -109,7 +109,22 @@ const authSlice = createSlice({
       .addCase(authOperations.fetchRefreshToken.pending, (state) => {
         state.error = false;
         state.isLoading = true;
-        state.isLoggedIn = false;
+        // state.isLoggedIn = false;
+      })
+      .addCase(
+        authOperations.changeInfoUser.fulfilled,
+        (state, { payload }) => {
+          state.isLoading = false;
+          state.user = payload;
+        }
+      )
+      .addCase(authOperations.changeInfoUser.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(authOperations.changeInfoUser.rejected, (state, { payload }) => {
+        state.isLoading = true;
+        state.error = true;
+        state.notify = (payload as IErrorResponse).response.data;
       });
   },
 });
