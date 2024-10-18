@@ -104,6 +104,18 @@ const fetchCurrentUser = createAsyncThunk(
   }
 );
 
+const changeInfoUser = createAsyncThunk(
+  "user/change",
+  async (objUser, thunkAPI) => {
+    try {
+      const { data } = await api.post("/users/update", objUser);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 const operationsAuth = {
   register,
   logOut,
@@ -111,6 +123,7 @@ const operationsAuth = {
   fetchCurrentUser,
   logInG,
   fetchRefreshToken,
+  changeInfoUser,
 };
 
 export default operationsAuth;
