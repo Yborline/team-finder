@@ -2,10 +2,17 @@ import { createSlice } from "@reduxjs/toolkit";
 import authOperations from "./auth-operations";
 import { IErrorResponse } from "@interfaces/slicer";
 
+const user = {
+  name: null,
+  id: null,
+  email: null,
+  telegramLink: null,
+  discordUsername: null,
+};
 const initialState = {
-  user: { name: null },
+  user: user,
   token: null,
-  isLoggedIn: true,
+  isLoggedIn: false,
   isLoading: true,
   error: false,
   notify: null as string | null,
@@ -44,7 +51,7 @@ const authSlice = createSlice({
       })
       .addCase(authOperations.logIn.fulfilled, (state, { payload }) => {
         console.log("Payload:", payload);
-        // state.user = payload.data.user;
+        state.user = payload.data.user;
         state.isLoggedIn = true;
         state.user.name = payload.username;
         state.token = payload.access_token;
@@ -83,7 +90,7 @@ const authSlice = createSlice({
       .addCase(
         authOperations.fetchCurrentUser.fulfilled,
         (state, { payload }) => {
-          state.user.name = payload.name;
+          state.user = payload;
           state.isLoggedIn = true;
         }
       )
@@ -93,7 +100,7 @@ const authSlice = createSlice({
       .addCase(authOperations.fetchCurrentUser.pending, (state) => {
         state.error = false;
         state.isLoading = true;
-        // state.isLoggedIn = false;
+        state.isLoggedIn = false;
       })
       .addCase(
         authOperations.fetchRefreshToken.fulfilled,
