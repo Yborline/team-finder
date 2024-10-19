@@ -1,0 +1,16 @@
+.formUser {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+
+    .textInfo {
+        text-align: center;
+    }
+
+}
+
+@media screen and (min-width: 480px) {
+    .formUser {}
+
+}
