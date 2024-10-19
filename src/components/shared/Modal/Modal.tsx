@@ -1,7 +1,7 @@
 import { FC, useEffect } from "react";
 import { createPortal } from "react-dom";
 import styles from "./Modal.module.scss";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface IModalProps {
   close: () => void;
