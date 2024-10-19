@@ -1,7 +1,7 @@
 import { ISocials, SocialKeys, typePost } from "@interfaces/form";
 
 export interface Post {
-  id: string;
+  id: number;
   name: string;
   createdByUser: {
     id: number;
