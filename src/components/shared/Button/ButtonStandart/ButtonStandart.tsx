@@ -2,13 +2,18 @@ import React, { FC } from "react";
 import styles from "./ButtonStandart.module.scss";
 
 interface IButtonStandart {
-  onClick: () => void;
+  type?: "button" | "submit";
+  onClick?: () => void;
   children: string;
 }
 
-const ButtonStandart: FC<IButtonStandart> = ({ onClick, children }) => {
+const ButtonStandart: FC<IButtonStandart> = ({
+  onClick,
+  children,
+  type = "button",
+}) => {
   return (
-    <button className={styles.buttonStandart} onClick={onClick}>
+    <button type={type} className={styles.buttonStandart} onClick={onClick}>
       {children}
     </button>
   );
