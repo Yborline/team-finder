@@ -6,6 +6,7 @@ export interface IUserForm {
   email?: forUserString;
   telegramLink?: forUserString;
   discordUsername?: forUserString;
+  displayName?: forUserString;
 }
 
 export interface IUser extends IUserForm {
