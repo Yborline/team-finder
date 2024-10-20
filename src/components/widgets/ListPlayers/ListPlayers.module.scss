@@ -1,14 +1,16 @@
 .listPlayers {
+    box-sizing: border-box;
     margin-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 15px;
+    margin-bottom: 40px;
 
     .boxPlayer {
         border-radius: 16px;
         border: 1px solid var(--listPlyerItemBorder);
-        margin-bottom: 15px;
         color: var(--grayLightText);
         padding: 10px 20px;
         width: 280px;
@@ -63,7 +65,7 @@
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 
         justify-items: center;
-        gap: 15px;
+
 
         .boxPlayer {
             margin-bottom: 0px;
