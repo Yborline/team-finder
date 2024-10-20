@@ -13,7 +13,7 @@ interface IPropsUserForm {
 }
 
 const UserForm: FC<IPropsUserForm> = ({ user, onSubmit }) => {
-  const { name, email, telegramLink, discordUsername } = user;
+  const { name, email, telegramLink, discordUsername, displayName } = user;
 
   const {
     register,
@@ -27,13 +27,19 @@ const UserForm: FC<IPropsUserForm> = ({ user, onSubmit }) => {
       telegramLink: telegramLink ?? undefined,
       discordUsername: discordUsername ?? undefined,
       email: email ?? undefined,
+      displayName: displayName ?? undefined,
     },
   });
 
   const handleSubmitUserForm: SubmitHandler<IUserForm> = (value) => {
     console.log(value);
-
-    if (value) onSubmit(value);
+    const newObj = Object.fromEntries(
+      Object.entries(value).map(([key, val]) => [
+        key,
+        val === "" ? user[key as keyof IUser] ?? "" : val,
+      ])
+    );
+    if (value) onSubmit(newObj);
   };
 
   return (
@@ -42,7 +48,15 @@ const UserForm: FC<IPropsUserForm> = ({ user, onSubmit }) => {
       onSubmit={handleSubmit(handleSubmitUserForm)}
     >
       <div>
-        <p>Введіть ваше нове ім'я</p>
+        <p>Ваш новий унікальний нік</p>
+        <InputModal
+          hookForm={register("displayName")}
+          classN={"transparent"}
+          text="Ім'я"
+        />
+      </div>
+      <div>
+        <p>Ваше нове ім'я</p>
         <InputModal
           hookForm={register("name")}
           classN={"transparent"}
@@ -75,6 +89,7 @@ const UserForm: FC<IPropsUserForm> = ({ user, onSubmit }) => {
           text="Ваше ім'я в телеграмі"
         />
       </div>
+
       {errors.name && <p>{errors.name.message}</p>}
       {errors.email && <p>{errors.email.message}</p>}
       {errors.discordUsername && <p>{errors.discordUsername.message}</p>}
