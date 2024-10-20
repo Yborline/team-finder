@@ -1,6 +1,8 @@
 import { IFormLogin, IFormRegisterSend } from "@interfaces/form";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import api from "@api/api";
+import { IUserForm } from "@interfaces/user/user";
+import { AxiosError } from "axios";
 // import axios from "axios";
 
 const token = {
@@ -79,6 +81,8 @@ const fetchRefreshToken = createAsyncThunk(
         `auth/refresh?refreshToken=${tokenRefresh}`
       );
       token.setAccessToken(data.access_token);
+      thunkApi.dispatch(fetchCurrentUser());
+
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error);
@@ -94,21 +98,34 @@ const fetchCurrentUser = createAsyncThunk(
       console.log(data);
       return data;
     } catch (error) {
-      const tokenRefresh = document.cookie
-        .split("; ")
-        .find((row) => row.startsWith("refreshToken"))
-        ?.split("=")[1];
-      if (tokenRefresh) thunkAPI.dispatch(fetchRefreshToken(tokenRefresh));
-      else return thunkAPI.rejectWithValue(error);
+      if (error instanceof AxiosError && error.response?.status === 401) {
+        const tokenRefresh = document.cookie
+          .split("; ")
+          .find((row) => row.startsWith("refreshToken"))
+          ?.split("=")[1];
+
+        if (tokenRefresh) {
+          const result = await thunkAPI.dispatch(
+            fetchRefreshToken(tokenRefresh)
+          );
+          if (fetchRefreshToken.rejected.match(result)) {
+            return thunkAPI.rejectWithValue(result.error);
+          }
+        } else {
+          return thunkAPI.rejectWithValue(error);
+        }
+      } else {
+        return thunkAPI.rejectWithValue(error);
+      }
     }
   }
 );
 
 const changeInfoUser = createAsyncThunk(
   "user/change",
-  async (objUser, thunkAPI) => {
+  async (objUser: IUserForm, thunkAPI) => {
     try {
-      const { data } = await api.post("/users/update", objUser);
+      const { data } = await api.put("/users/update", objUser);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
