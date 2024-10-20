@@ -5,15 +5,21 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "@interfaces/redux";
 import postsOperations from "@redux/posts/posts-operations";
-import { getAllFilterPosts } from "@redux/posts/posts-selector";
+import {
+  getAllFilterPosts,
+  getLoadingPosts,
+} from "@redux/posts/posts-selector";
 import ReactPaginate from "react-paginate";
+import Loader from "@components/shared/Loader/Loader";
+
 // import { resetFilter } from "@redux/posts/posts-slice";
 
-const ITEMS_PER_PAGE = 5;
+const ITEMS_PER_PAGE = 10;
 
 const TeamList = () => {
   const dispatch = useAppDispatch();
   const posts = useSelector(getAllFilterPosts);
+  const loadingPosts = useSelector(getLoadingPosts);
   const [currentPage, setCurrentPage] = useState(0);
 
   const handlePageClick = (event: { selected: number }) => {
@@ -32,19 +38,27 @@ const TeamList = () => {
   return (
     <div className={styles.boxTeam}>
       <Filter />
-      {paginatedPosts.length > 0 && <ListPlayers list={paginatedPosts} />}
-
-      <ReactPaginate
-        previousLabel={"← Previous"}
-        nextLabel={"Next →"}
-        breakLabel={"..."}
-        pageCount={Math.ceil(posts.length / ITEMS_PER_PAGE)}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={5}
-        onPageChange={handlePageClick}
-        containerClassName={styles.pagination}
-        activeClassName={styles.active}
-      />
+      {loadingPosts ? (
+        <Loader />
+      ) : (
+        <div>
+          {paginatedPosts.length > 0 && <ListPlayers list={paginatedPosts} />}
+          <ReactPaginate
+            previousLabel={"←"}
+            nextLabel={"→"}
+            breakLabel={"..."}
+            pageCount={Math.ceil(posts.length / ITEMS_PER_PAGE)}
+            marginPagesDisplayed={2}
+            pageRangeDisplayed={5}
+            onPageChange={handlePageClick}
+            containerClassName={styles.pagination}
+            previousClassName={styles.prevPage}
+            nextClassName={styles.nextPage}
+            pageClassName={styles.onePage}
+            activeClassName={styles.activePage}
+          />
+        </div>
+      )}
     </div>
   );
 };
