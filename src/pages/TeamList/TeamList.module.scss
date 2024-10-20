@@ -1,11 +1,75 @@
 .boxTeam {
     flex: 1;
+    box-sizing: border-box;
     padding: 10px 20px;
     display: flex;
     justify-content: flex-start;
     // align-items: center;
     flex-direction: column;
     background: var(--team-background);
+
+    .boxLoader {
+        flex: 1;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .prevPage {
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: var(--background-paggination);
+
+        &:hover {
+            background: var(--background-paggination-active)
+        }
+    }
+
+    .nextPage {
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: var(--background-paggination);
+
+        &:hover {
+            background: var(--background-paggination-active)
+        }
+    }
+
+    .onePage {
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: var(--background-paggination);
+    }
+
+    .activePage {
+        background: var(--background-paggination-active)
+    }
+
+
 }
 
 
