@@ -15,6 +15,7 @@ import { ModalType } from "@interfaces/modal/intex";
 import "react-toastify/dist/ReactToastify.css";
 import operationsAuth from "@redux/auth/auth-operations";
 import ButtonExit from "@components/shared/Button/ButtonExit/ButtonExit";
+import { useEffect } from "react";
 // import ThemeToggle from "@components/shared/ThemeToggle/ThemeToggle";
 
 export const Header = () => {
@@ -23,6 +24,11 @@ export const Header = () => {
   const dispatch = useAppDispatch<AppDispatch>();
   const { t } = useTranslation();
 
+  useEffect(() => {
+    if (loggedIn) {
+      dispatch(setModal(""));
+    }
+  }, [dispatch, loggedIn]);
   const handleChangeModal = (value: ModalType) => {
     dispatch(setModal(value));
   };
