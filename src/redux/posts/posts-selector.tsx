@@ -4,6 +4,7 @@ import { createSelector } from "@reduxjs/toolkit";
 import { filterStateDefault } from "./posts-slice";
 
 export const getPosts = (state: IRootState) => state.posts.posts;
+export const getLoadingPosts = (state: IRootState) => state.posts.loading;
 export const getFilterObj = (state: IRootState) => state.posts.filter;
 export const getFilterInput = (state: IRootState) => state.posts.filter.input;
 export const getFilterType = (state: IRootState) => state.posts.filter.type;
