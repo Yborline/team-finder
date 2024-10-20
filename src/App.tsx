@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import store from "@redux/store";
 import { Provider } from "react-redux";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import LoaderPage from "@pages/LoaderPage/LoaderPage";
 
 // import { useTranslation } from "react-i18next";
 
@@ -15,7 +16,7 @@ function App() {
   return (
     <Provider store={store}>
       <GoogleOAuthProvider clientId={googleId}>
-        <Suspense fallback="...loading">
+        <Suspense fallback={<LoaderPage />}>
           <RouterProvider router={router} />
         </Suspense>
       </GoogleOAuthProvider>
