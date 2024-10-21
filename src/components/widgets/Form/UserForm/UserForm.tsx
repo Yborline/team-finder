@@ -3,9 +3,8 @@ import InputModal from "@components/shared/Input/InputModal/InputModal";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { IUser, IUserForm } from "@interfaces/user/user";
 import styles from "./UserForm.module.scss";
-import schemaLogin from "@validations/login";
 import schemaUser from "@validations/user";
-import React, { FC } from "react";
+import { FC } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 interface IPropsUserForm {
   user: IUser;
@@ -54,6 +53,7 @@ const UserForm: FC<IPropsUserForm> = ({ user, onSubmit }) => {
           classN={"transparent"}
           text="Ім'я"
         />
+        {errors.displayName && <p>{errors.displayName.message}</p>}
       </div>
       <div>
         <p>Ваше нове ім'я</p>
@@ -62,6 +62,7 @@ const UserForm: FC<IPropsUserForm> = ({ user, onSubmit }) => {
           classN={"transparent"}
           text="Ім'я"
         />
+        {errors.name && <p>{errors.name.message}</p>}
       </div>
       <div>
         {" "}
@@ -71,6 +72,7 @@ const UserForm: FC<IPropsUserForm> = ({ user, onSubmit }) => {
           classN={"transparent"}
           text="Електронна пошта"
         />
+        {errors.email && <p>{errors.email.message}</p>}
       </div>
       <div>
         {" "}
@@ -80,6 +82,7 @@ const UserForm: FC<IPropsUserForm> = ({ user, onSubmit }) => {
           classN={"transparent"}
           text="Діскорд"
         />
+        {errors.discordUsername && <p>{errors.discordUsername.message}</p>}
       </div>
       <div>
         <p>Введіть новий нік в телеграмі</p>
@@ -88,13 +91,10 @@ const UserForm: FC<IPropsUserForm> = ({ user, onSubmit }) => {
           classN={"transparent"}
           text="Ваше ім'я в телеграмі"
         />
+        {errors.telegramLink && <p>{errors.telegramLink.message}</p>}
       </div>
 
-      {errors.name && <p>{errors.name.message}</p>}
-      {errors.email && <p>{errors.email.message}</p>}
-      {errors.discordUsername && <p>{errors.discordUsername.message}</p>}
-      {errors.telegramLink && <p>{errors.telegramLink.message}</p>}
-      <ButtonStandart type="submit">dsdsdsd</ButtonStandart>
+      <ButtonStandart type="submit">Змінити данні</ButtonStandart>
     </form>
   );
 };
