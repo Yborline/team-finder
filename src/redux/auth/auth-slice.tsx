@@ -13,7 +13,7 @@ const initialState = {
   user: user,
   token: null,
   isLoggedIn: false,
-  isLoading: true,
+  isLoading: false,
   error: false,
   notify: null as string | null,
 };
@@ -59,9 +59,10 @@ const authSlice = createSlice({
       })
       .addCase(authOperations.logIn.rejected, (state, { payload }) => {
         console.log("Payload:", payload);
-        state.isLoading = false;
-        state.notify = (payload as IErrorResponse).response.data;
         state.error = true;
+        state.notify = payload as string;
+        state.isLoggedIn = false;
+        state.isLoading = false;
       })
       .addCase(authOperations.logOut.fulfilled, (state) => {
         state.user.name = null;
@@ -83,7 +84,8 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
       })
       .addCase(authOperations.logInG.rejected, (state, { payload }) => {
-        console.log("Payload:", payload);
+        state.error = true;
+        state.notify = payload as string;
         state.isLoggedIn = false;
         state.isLoading = false;
       })
@@ -99,7 +101,7 @@ const authSlice = createSlice({
       })
       .addCase(authOperations.fetchCurrentUser.pending, (state) => {
         state.error = false;
-        state.isLoading = true;
+        // state.isLoading = true;
         state.isLoggedIn = false;
       })
       .addCase(
@@ -112,11 +114,12 @@ const authSlice = createSlice({
       .addCase(authOperations.fetchRefreshToken.rejected, (state) => {
         state.error = true;
         state.isLoading = false;
+        state.isLoggedIn = true;
       })
       .addCase(authOperations.fetchRefreshToken.pending, (state) => {
         state.error = false;
         state.isLoading = true;
-        // state.isLoggedIn = false;
+        state.isLoggedIn = false;
       })
       .addCase(
         authOperations.changeInfoUser.fulfilled,
