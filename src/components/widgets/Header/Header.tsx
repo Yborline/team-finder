@@ -7,7 +7,11 @@ import Register from "../Form/Register/Register";
 import Login from "../Form/Login/Login";
 import ButtonUser from "@components/shared/Button/ButtonUser/ButtonUser";
 import { useSelector } from "react-redux";
-import { getLoggedIn } from "@redux/auth/auth-selector";
+import {
+  getErrorUser,
+  getLoggedIn,
+  getNotifyUser,
+} from "@redux/auth/auth-selector";
 import { getModal } from "@redux/modal/modal-selector";
 import { AppDispatch, useAppDispatch } from "@interfaces/redux";
 import { setModal } from "@redux/modal/modal-slice";
@@ -16,19 +20,26 @@ import "react-toastify/dist/ReactToastify.css";
 import operationsAuth from "@redux/auth/auth-operations";
 import ButtonExit from "@components/shared/Button/ButtonExit/ButtonExit";
 import { useEffect } from "react";
+import { notify } from "../Tostify/Tostify";
 // import ThemeToggle from "@components/shared/ThemeToggle/ThemeToggle";
 
 export const Header = () => {
   const modal = useSelector(getModal);
   const loggedIn = useSelector(getLoggedIn);
+  const errorUser = useSelector(getErrorUser);
+  const notifyUser = useSelector(getNotifyUser);
   const dispatch = useAppDispatch<AppDispatch>();
   const { t } = useTranslation();
 
   useEffect(() => {
     if (loggedIn) {
       dispatch(setModal(""));
+    } else if (errorUser) {
+      dispatch(setModal(""));
+      notify("error", `${notifyUser}`);
     }
-  }, [dispatch, loggedIn]);
+  }, [dispatch, errorUser, loggedIn, notifyUser]);
+
   const handleChangeModal = (value: ModalType) => {
     dispatch(setModal(value));
   };
