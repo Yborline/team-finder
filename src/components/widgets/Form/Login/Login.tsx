@@ -11,12 +11,16 @@ import AuthOtherBox from "@components/widgets/AuthOtherBox/AuthOtherBox";
 import { AppDispatch, useAppDispatch } from "@interfaces/redux";
 import authOperations from "@redux/auth/auth-operations";
 import { IFormLogin } from "@interfaces/form";
+import { useSelector } from "react-redux";
+import { getLoading } from "@redux/auth/auth-selector";
+import Loader from "@components/shared/Loader/Loader";
 
 interface IPropsLogin {
   close: () => void;
 }
 
 const Login: FC<IPropsLogin> = ({ close }) => {
+  const loadingUser = useSelector(getLoading);
   const dispatch = useAppDispatch<AppDispatch>();
   const {
     register,
@@ -32,26 +36,30 @@ const Login: FC<IPropsLogin> = ({ close }) => {
 
   return (
     <ModalBackdropAuth close={close}>
-      <form className={styles.boxLogin} onSubmit={handleSubmit(onSubmit)}>
-        <div className={styles.boxInputs}>
-          <InputModal
-            hookForm={register("name", { required: true, maxLength: 20 })}
-            text="Нікнейм"
-            // aria-invalid={errors.name ? "true" : "false"}
-          />
-          <ErrorText error={errors.name} />
-          <InputModal
-            hookForm={register("password", { required: true, maxLength: 20 })}
-            text="Пароль"
-            type="password"
-            // aria-invalid={errors.password ? "true" : "false"}
-            repeatPassword={true}
-          />
-          <ErrorText error={errors.password} />
-        </div>
-        <ButtonAuth text="Увійти" type="submit" />
-        <AuthOtherBox />
-      </form>
+      {loadingUser ? (
+        <Loader />
+      ) : (
+        <form className={styles.boxLogin} onSubmit={handleSubmit(onSubmit)}>
+          <div className={styles.boxInputs}>
+            <InputModal
+              hookForm={register("name", { required: true, maxLength: 20 })}
+              text="Нікнейм"
+              // aria-invalid={errors.name ? "true" : "false"}
+            />
+            <ErrorText error={errors.name} />
+            <InputModal
+              hookForm={register("password", { required: true, maxLength: 20 })}
+              text="Пароль"
+              type="password"
+              // aria-invalid={errors.password ? "true" : "false"}
+              repeatPassword={true}
+            />
+            <ErrorText error={errors.password} />
+          </div>
+          <ButtonAuth text="Увійти" type="submit" />
+          <AuthOtherBox />
+        </form>
+      )}
     </ModalBackdropAuth>
   );
 };
