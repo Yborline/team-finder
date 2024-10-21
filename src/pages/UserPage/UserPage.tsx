@@ -27,6 +27,7 @@ const UserPage = () => {
 
   const handleSaveInfo = (info: IUserForm) => {
     dispatch(operationsAuth.changeInfoUser(info));
+    changeStatusChange();
   };
 
   return (
@@ -40,16 +41,13 @@ const UserPage = () => {
         </div>
       ) : (
         <div className={styles.boxInfo}>
-          <div>
+          <div className={styles.boxText}>
             <p>Ім'я: {name}</p>
-          </div>
-          <div>
+
             <p>Пошта: {email}</p>
-          </div>
-          <div>
+
             <p>Телеграм: {telegramLink}</p>
-          </div>
-          <div>
+
             <p>Діскорд: {discordUsername}</p>
           </div>
           <ButtonStandart onClick={changeStatusChange}>
