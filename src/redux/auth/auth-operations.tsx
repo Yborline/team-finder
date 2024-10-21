@@ -1,6 +1,7 @@
 import { IFormLogin, IFormRegisterSend } from "@interfaces/form";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import api from "@api/api";
+import axios from "axios";
 import { IUserForm } from "@interfaces/user/user";
 import { AxiosError } from "axios";
 // import axios from "axios";
@@ -37,7 +38,7 @@ const register = createAsyncThunk(
 
 const logIn = createAsyncThunk(
   "auth/login",
-  async (credentials: IFormLogin, thunkAPI) => {
+  async (credentials: IFormLogin, { rejectWithValue }) => {
     try {
       const { data } = await api.post("auth/login", credentials);
 
@@ -45,7 +46,14 @@ const logIn = createAsyncThunk(
       token.setRefreshToken(data.refresh_token);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      if (axios.isAxiosError(error)) {
+        if (error.response) {
+          return rejectWithValue(error.response.data.message || "Server error");
+        } else if (error.request) {
+          return rejectWithValue("Щось пішло не так, спробуйте пізніше");
+        }
+      }
+      return rejectWithValue(error);
     }
   }
 );
@@ -59,6 +67,13 @@ const logInG = createAsyncThunk(
       token.setRefreshToken(data.refresh_token);
       return data;
     } catch (error) {
+      if (axios.isAxiosError(error)) {
+        if (error.response) {
+          return rejectWithValue(error.response.data.message || "Server error");
+        } else if (error.request) {
+          return rejectWithValue("Щось пішло не так, спробуйте пізніше");
+        }
+      }
       return rejectWithValue(error);
     }
   }
