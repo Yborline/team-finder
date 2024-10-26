@@ -8,6 +8,28 @@
         "createAPost": "Create a post"
     },
     "auth": {},
-    "listTeam": {},
+    "listTeam": {
+        "filter": {
+            "filter": "Filter",
+            "type": "Type",
+            "sortDate": "Sort by Date",
+            "connection": "Connection Type",
+            "resetButton": "Reset Filters",
+            "optionType": {
+                "allCards": "All Cards",
+                "lookingForPlayers": "Looking for Player",
+                "lookingForGroup": "Looking for Team"
+            },
+            "optionDate": {
+                "new": "New Dates",
+                "old": "Old Dates"
+            },
+            "optionSocials": {
+                "all": "All",
+                "discord": "Discord",
+                "telegram": "Telegram"
+            }
+        }
+    },
     "createPost": {}
 }

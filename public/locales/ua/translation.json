@@ -8,6 +8,28 @@
         "createAPost": "Створити пост"
     },
     "auth": {},
-    "listTeam": {},
+    "listTeam": {
+        "filter": {
+            "filter": "Фільтр",
+            "type": "Тип",
+            "sortDate": "Сортувати за датою",
+            "connection": "Спосіб зв'язку",
+            "resetButton": "Скинути налаштування",
+            "optionType": {
+                "allCards": "Всі картки",
+                "lookingForPlayers": "Пошук гравця",
+                "lookingForGroup": "Пошук команди"
+            },
+            "optionDate": {
+                "new": "Нові дати",
+                "old": "Старі дати"
+            },
+            "optionSocials": {
+                "all": "Всі",
+                "discord": "Discord",
+                "telegram": "Telegram"
+            }
+        }
+    },
     "createPost": {}
 }

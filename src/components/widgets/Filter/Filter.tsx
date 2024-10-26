@@ -12,12 +12,14 @@ import { useAppDispatch } from "@interfaces/redux";
 import { setModal } from "@redux/modal/modal-slice";
 import { getCountChangedFilter } from "@redux/posts/posts-selector";
 import { setInputFilter } from "@redux/posts/posts-slice";
+import { useTranslation } from "react-i18next";
 
 const Filter = () => {
   const showModal = useSelector(getModal);
   const countFilter = useSelector(getCountChangedFilter);
   const dispatch = useAppDispatch();
   const [isOpen, setIsOpen] = useState(true);
+  const { t } = useTranslation();
 
   const toggleModal = () => {
     if (showModal === "filter") {
@@ -49,7 +51,7 @@ const Filter = () => {
         </IconContext.Provider>
       </div>
       <button onClick={toggleModal} className={styles.buttonFilter}>
-        Filter
+        {t("listTeam.filter.filter")}
         <IconContext.Provider value={{ className: styles.iconFilter }}>
           <IoFilterSharp />
         </IconContext.Provider>
