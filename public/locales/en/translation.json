@@ -7,7 +7,12 @@
         "teamSearch": "Team search",
         "createAPost": "Create a post"
     },
-    "auth": {},
+    "auth": {
+        "uniqName": "Unique name",
+        "password": "Password",
+        "email": "Email",
+        "PasswordConfirmation": "Password confirmation"
+    },
     "listTeam": {
         "filter": {
             "filter": "Filter",

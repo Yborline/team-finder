@@ -7,7 +7,13 @@
         "teamSearch": "Пошук команди",
         "createAPost": "Створити пост"
     },
-    "auth": {},
+    "auth": {
+        "uniqName": "Унікальне ім'я",
+        "password": "Пароль",
+        "login": "Увійти",
+        "email": "Електронна адреса",
+        "PasswordConfirmation": "Підтвердження паролю"
+    },
     "listTeam": {
         "filter": {
             "filter": "Фільтр",

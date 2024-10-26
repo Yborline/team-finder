@@ -11,6 +11,7 @@ import AuthOtherBox from "@components/widgets/AuthOtherBox/AuthOtherBox";
 import authOperations from "@redux/auth/auth-operations";
 import { useAppDispatch, AppDispatch } from "@interfaces/redux";
 import { IFormInput } from "@interfaces/form";
+import { useTranslation } from "react-i18next";
 
 interface IPropsRegister {
   close: () => void;
@@ -18,6 +19,7 @@ interface IPropsRegister {
 
 const Register: FC<IPropsRegister> = ({ close }) => {
   const dispatch = useAppDispatch<AppDispatch>();
+  const { t } = useTranslation();
   const {
     register,
     handleSubmit,
@@ -61,20 +63,20 @@ const Register: FC<IPropsRegister> = ({ close }) => {
         <div className={styles.boxInputs}>
           <InputModal
             hookForm={register("name", { required: true, maxLength: 20 })}
-            text="Нікнейм"
+            text={t("auth.uniqName")}
             aria-invalid={errors.name ? "true" : "false"}
           />
           <ErrorText error={errors.name} />
           <InputModal
             hookForm={register("email", { required: true, maxLength: 20 })}
-            text="Електронна адреса"
+            text={t("auth.email")}
             aria-invalid={errors.name ? "true" : "false"}
           />
           <ErrorText error={errors.email} />
           {/* {errors.email && <p role="alert">{errors.email?.message}</p>} */}
           <InputModal
             hookForm={register("password", { required: true, maxLength: 20 })}
-            text="Пароль"
+            text={t("auth.password")}
             type="password"
             aria-invalid={errors.password ? "true" : "false"}
             repeatPassword={true}
@@ -86,14 +88,14 @@ const Register: FC<IPropsRegister> = ({ close }) => {
               required: true,
               maxLength: 20,
             })}
-            text="Підтвердження паролю"
+            text={t("auth.PasswordConfirmation")}
             type="password"
             aria-invalid={errors.repeatPassword ? "true" : "false"}
             repeatPassword={true}
           />
           <ErrorText error={errors.repeatPassword} />
         </div>
-        <ButtonAuth text="Зареєструватися" type="submit" />
+        <ButtonAuth text={t("header.signUp")} type="submit" />
         <AuthOtherBox />
       </form>
     </ModalBackdropAuth>
