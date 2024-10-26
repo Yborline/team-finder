@@ -20,10 +20,11 @@ const token = {
       "refreshToken=; Max-Age=0; path=/; secure; SameSite=Strict";
   },
 };
+
 // axios.defaults.baseURL = "http://95.135.51.126/api/";
 
 const register = createAsyncThunk(
-  "auth/register",
+  "register/auth",
   async (credentials: IFormRegisterSend, thunkAPI) => {
     try {
       const { data } = await api.post("auth/register", credentials);
@@ -37,7 +38,7 @@ const register = createAsyncThunk(
 );
 
 const logIn = createAsyncThunk(
-  "auth/login",
+  "login/auth",
   async (credentials: IFormLogin, { rejectWithValue }) => {
     try {
       const { data } = await api.post("auth/login", credentials);
@@ -58,7 +59,7 @@ const logIn = createAsyncThunk(
   }
 );
 const logInG = createAsyncThunk(
-  "auth/google",
+  "google/auth",
   async (credentials: string, { rejectWithValue }) => {
     try {
       const { data } = await api.get(`auth/google?googleToken=${credentials}`);
@@ -79,7 +80,7 @@ const logInG = createAsyncThunk(
   }
 );
 
-const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
+const logOut = createAsyncThunk("logout/auth", async (_, thunkAPI) => {
   try {
     await api.get("users/logout");
     token.unset();
@@ -89,7 +90,7 @@ const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
 });
 
 const fetchRefreshToken = createAsyncThunk(
-  "auth/refreshToken",
+  "refreshToken/auth",
   async (tokenRefresh: string, thunkApi) => {
     try {
       const { data } = await api.get(
@@ -106,7 +107,7 @@ const fetchRefreshToken = createAsyncThunk(
 );
 
 const fetchCurrentUser = createAsyncThunk(
-  "auth/refresh",
+  "refresh/auth",
   async (_, thunkAPI) => {
     try {
       const { data } = await api.get("/users/getmyself");
