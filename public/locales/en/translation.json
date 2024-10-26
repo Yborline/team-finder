@@ -3,7 +3,10 @@
         "login": "Login",
         "signUp": "Sign up"
     },
-    "home": {},
+    "home": {
+        "teamSearch": "Team search",
+        "createAPost": "Create a post"
+    },
     "auth": {},
     "listTeam": {},
     "createPost": {}

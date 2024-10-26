@@ -3,7 +3,10 @@
         "login": "Увійти",
         "signUp": "Реєстрація"
     },
-    "home": {},
+    "home": {
+        "teamSearch": "Пошук команди",
+        "createAPost": "Створити пост"
+    },
     "auth": {},
     "listTeam": {},
     "createPost": {}

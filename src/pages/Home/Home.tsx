@@ -17,12 +17,14 @@ import { useSelector } from "react-redux";
 import { getLoggedIn } from "@redux/auth/auth-selector";
 import { AppDispatch, useAppDispatch } from "@interfaces/redux";
 import { setModal } from "@redux/modal/modal-slice";
+import { useTranslation } from "react-i18next";
 
 export const Home = () => {
   const isLoggedIn = useSelector(getLoggedIn);
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useAppDispatch<AppDispatch>();
+  const { t } = useTranslation();
   const handleClickCreate = () => {
     const currentPath = location.pathname;
 
@@ -47,7 +49,7 @@ export const Home = () => {
           alt="meepo"
         />
         <p className={`${styles.textLeft} ${styles.textSelect}`}>
-          Пошук команди
+          {t("home.teamSearch")}
         </p>
         <img
           src={gtaMob}
@@ -78,7 +80,7 @@ export const Home = () => {
           alt="stalker"
         />
         <p className={`${styles.textRight} ${styles.textSelect}`}>
-          Створити пост
+          {t("home.createAPost")}
         </p>
         <img
           src={WukongMob}
