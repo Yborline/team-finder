@@ -74,6 +74,7 @@ const authSlice = createSlice({
         state.user.name = null;
         state.token = null;
         state.isLoggedIn = false;
+        state.isLoading = false;
       })
       .addCase(
         authOperations.fetchCurrentUser.fulfilled,
