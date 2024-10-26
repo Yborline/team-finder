@@ -4,7 +4,7 @@ import { notify } from "@components/widgets/Tostify/Tostify";
 import { IFormCreatePost } from "@interfaces/form";
 
 const getPosts = createAsyncThunk(
-  "post/list",
+  "list/post",
   async (credentials: number, thunkAPI) => {
     try {
       const { data } = await api.get(`post/list/${credentials}`);
@@ -15,7 +15,7 @@ const getPosts = createAsyncThunk(
   }
 );
 const addPost = createAsyncThunk(
-  "post/createPost",
+  "createPost/post",
   async (credentials: IFormCreatePost, thunkAPI) => {
     try {
       const { data } = await api.post(`post/add`, credentials);
