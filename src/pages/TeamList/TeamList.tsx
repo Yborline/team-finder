@@ -42,21 +42,29 @@ const TeamList = () => {
         <Loader />
       ) : (
         <div>
-          {paginatedPosts.length > 0 && <ListPlayers list={paginatedPosts} />}
-          <ReactPaginate
-            previousLabel={"←"}
-            nextLabel={"→"}
-            breakLabel={"..."}
-            pageCount={Math.ceil(posts.length / ITEMS_PER_PAGE)}
-            marginPagesDisplayed={2}
-            pageRangeDisplayed={5}
-            onPageChange={handlePageClick}
-            containerClassName={styles.pagination}
-            previousClassName={styles.prevPage}
-            nextClassName={styles.nextPage}
-            pageClassName={styles.onePage}
-            activeClassName={styles.activePage}
-          />
+          {paginatedPosts.length > 0 ? (
+            <>
+              <ListPlayers list={paginatedPosts} />
+              <ReactPaginate
+                previousLabel={"←"}
+                nextLabel={"→"}
+                breakLabel={"..."}
+                pageCount={Math.ceil(posts.length / ITEMS_PER_PAGE)}
+                marginPagesDisplayed={2}
+                pageRangeDisplayed={5}
+                onPageChange={handlePageClick}
+                containerClassName={styles.pagination}
+                previousClassName={styles.prevPage}
+                nextClassName={styles.nextPage}
+                pageClassName={styles.onePage}
+                activeClassName={styles.activePage}
+              />
+            </>
+          ) : (
+            <p className={styles.textEmpty}>
+              Не має постів з заданими фільтрами
+            </p>
+          )}
         </div>
       )}
     </div>
