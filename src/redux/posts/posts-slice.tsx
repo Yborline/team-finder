@@ -64,6 +64,301 @@ const mokkaPlayers: Post[] = [
       new Date().setHours(new Date().getHours() - 2)
     ).toString(),
   },
+  {
+    id: 4,
+    name: "LLLLLLLLLLLLLLLLLLLL1",
+    createdByUser: {
+      id: 1,
+      name: "User1",
+      email: "user1@example.com",
+    },
+    game: "punk",
+    text: "dssssssssssssssasasas",
+    tags: ["tags", "mid"],
+    socials: {
+      discord: null,
+      telegram: "yyyyyy",
+    },
+    type: "lookingForGroup",
+    createdDate: new Date().toString(),
+  },
+  {
+    id: 5,
+    name: "Lol2",
+    createdByUser: {
+      id: 2,
+      name: "User2",
+      email: "user2@example.com",
+    },
+    game: "dota 2",
+    text: "laxatron",
+    tags: ["sock", "mid"],
+    socials: {
+      discord: "123456789012345678",
+      telegram: "yyyyyy",
+    },
+    type: "lookingForPlayers",
+    createdDate: new Date(
+      new Date().setHours(new Date().getHours() - 1)
+    ).toString(),
+  },
+
+  {
+    id: 6,
+    name: "Lol3",
+    createdByUser: {
+      id: 3,
+      name: "User3",
+      email: "user3@example.com",
+    },
+    game: "dota 3",
+    text: "",
+    tags: ["dick", "mid"],
+    socials: {
+      discord: "123456789012345678",
+      telegram: null,
+    },
+    type: "lookingForPlayers",
+    createdDate: new Date(
+      new Date().setHours(new Date().getHours() - 2)
+    ).toString(),
+  },
+  {
+    id: 7,
+    name: "LLLLLLLLLLLLLLLLLLLL1",
+    createdByUser: {
+      id: 1,
+      name: "User1",
+      email: "user1@example.com",
+    },
+    game: "punk",
+    text: "dssssssssssssssasasas",
+    tags: ["tags", "mid"],
+    socials: {
+      discord: null,
+      telegram: "yyyyyy",
+    },
+    type: "lookingForGroup",
+    createdDate: new Date().toString(),
+  },
+  {
+    id: 8,
+    name: "Lol2",
+    createdByUser: {
+      id: 2,
+      name: "User2",
+      email: "user2@example.com",
+    },
+    game: "dota 2",
+    text: "laxatron",
+    tags: ["sock", "mid"],
+    socials: {
+      discord: "123456789012345678",
+      telegram: "yyyyyy",
+    },
+    type: "lookingForPlayers",
+    createdDate: new Date(
+      new Date().setHours(new Date().getHours() - 1)
+    ).toString(),
+  },
+
+  {
+    id: 9,
+    name: "Lol3",
+    createdByUser: {
+      id: 3,
+      name: "User3",
+      email: "user3@example.com",
+    },
+    game: "dota 3",
+    text: "",
+    tags: ["dick", "mid"],
+    socials: {
+      discord: "123456789012345678",
+      telegram: null,
+    },
+    type: "lookingForPlayers",
+    createdDate: new Date(
+      new Date().setHours(new Date().getHours() - 2)
+    ).toString(),
+  },
+  {
+    id: 10,
+    name: "LLLLLLLLLLLLLLLLLLLL1",
+    createdByUser: {
+      id: 1,
+      name: "User1",
+      email: "user1@example.com",
+    },
+    game: "punk",
+    text: "dssssssssssssssasasas",
+    tags: ["tags", "mid"],
+    socials: {
+      discord: null,
+      telegram: "yyyyyy",
+    },
+    type: "lookingForGroup",
+    createdDate: new Date().toString(),
+  },
+  {
+    id: 11,
+    name: "Lol2",
+    createdByUser: {
+      id: 2,
+      name: "User2",
+      email: "user2@example.com",
+    },
+    game: "dota 2",
+    text: "laxatron",
+    tags: ["sock", "mid"],
+    socials: {
+      discord: "123456789012345678",
+      telegram: "yyyyyy",
+    },
+    type: "lookingForPlayers",
+    createdDate: new Date(
+      new Date().setHours(new Date().getHours() - 1)
+    ).toString(),
+  },
+
+  {
+    id: 12,
+    name: "Lol3",
+    createdByUser: {
+      id: 3,
+      name: "User3",
+      email: "user3@example.com",
+    },
+    game: "dota 3",
+    text: "",
+    tags: ["dick", "mid"],
+    socials: {
+      discord: "123456789012345678",
+      telegram: null,
+    },
+    type: "lookingForPlayers",
+    createdDate: new Date(
+      new Date().setHours(new Date().getHours() - 2)
+    ).toString(),
+  },
+  {
+    id: 13,
+    name: "LLLLLLLLLLLLLLLLLLLL1",
+    createdByUser: {
+      id: 1,
+      name: "User1",
+      email: "user1@example.com",
+    },
+    game: "punk",
+    text: "dssssssssssssssasasas",
+    tags: ["tags", "mid"],
+    socials: {
+      discord: null,
+      telegram: "yyyyyy",
+    },
+    type: "lookingForGroup",
+    createdDate: new Date().toString(),
+  },
+  {
+    id: 14,
+    name: "Lol2",
+    createdByUser: {
+      id: 2,
+      name: "User2",
+      email: "user2@example.com",
+    },
+    game: "dota 2",
+    text: "laxatron",
+    tags: ["sock", "mid"],
+    socials: {
+      discord: "123456789012345678",
+      telegram: "yyyyyy",
+    },
+    type: "lookingForPlayers",
+    createdDate: new Date(
+      new Date().setHours(new Date().getHours() - 1)
+    ).toString(),
+  },
+
+  {
+    id: 15,
+    name: "Lol3",
+    createdByUser: {
+      id: 3,
+      name: "User3",
+      email: "user3@example.com",
+    },
+    game: "dota 3",
+    text: "",
+    tags: ["dick", "mid"],
+    socials: {
+      discord: "123456789012345678",
+      telegram: null,
+    },
+    type: "lookingForPlayers",
+    createdDate: new Date(
+      new Date().setHours(new Date().getHours() - 2)
+    ).toString(),
+  },
+  {
+    id: 16,
+    name: "LLLLLLLLLLLLLLLLLLLL1",
+    createdByUser: {
+      id: 1,
+      name: "User1",
+      email: "user1@example.com",
+    },
+    game: "punk",
+    text: "dssssssssssssssasasas",
+    tags: ["tags", "mid"],
+    socials: {
+      discord: null,
+      telegram: "yyyyyy",
+    },
+    type: "lookingForGroup",
+    createdDate: new Date().toString(),
+  },
+  {
+    id: 17,
+    name: "Lol2",
+    createdByUser: {
+      id: 2,
+      name: "User2",
+      email: "user2@example.com",
+    },
+    game: "dota 2",
+    text: "laxatron",
+    tags: ["sock", "mid"],
+    socials: {
+      discord: "123456789012345678",
+      telegram: "yyyyyy",
+    },
+    type: "lookingForPlayers",
+    createdDate: new Date(
+      new Date().setHours(new Date().getHours() - 1)
+    ).toString(),
+  },
+
+  {
+    id: 18,
+    name: "Lol3",
+    createdByUser: {
+      id: 3,
+      name: "User3",
+      email: "user3@example.com",
+    },
+    game: "dota 3",
+    text: "",
+    tags: ["dick", "mid"],
+    socials: {
+      discord: "123456789012345678",
+      telegram: null,
+    },
+    type: "lookingForPlayers",
+    createdDate: new Date(
+      new Date().setHours(new Date().getHours() - 2)
+    ).toString(),
+  },
 ];
 
 export const filterStateDefault: Filter = {
@@ -79,6 +374,17 @@ const initialState: IPosts = {
   error: false,
   notify: null as string | null,
   filter: filterStateDefault,
+};
+interface RejectedAction extends PayloadAction<IErrorResponse | string> {
+  type: string;
+}
+const isRejectedAction = (action: any): action is RejectedAction => {
+  return typeof action.type === "string" && action.type.endsWith("rejected");
+};
+
+const setPendingState = (state: IPosts) => {
+  state.loading = true;
+  state.error = false;
 };
 
 const postsSlice = createSlice({
@@ -109,27 +415,18 @@ const postsSlice = createSlice({
         state.posts = payload;
         state.loading = false;
       })
-      .addCase(postsOperations.getPosts.pending, (state) => {
-        state.loading = true;
-        state.error = false;
+      .addCase(postsOperations.addPost.fulfilled, (state) => {
+        state.loading = false;
       })
-      .addCase(postsOperations.getPosts.rejected, (state, { payload }) => {
+      .addMatcher(isRejectedAction, (state, { payload }) => {
         state.loading = false;
         state.error = true;
         state.notify = (payload as IErrorResponse).response?.data;
       })
-      .addCase(postsOperations.addPost.fulfilled, (state, { payload }) => {
-        // state.posts = [payload.post, ...state.posts];
-        state.loading = false;
-      })
-      .addCase(postsOperations.addPost.pending, (state, { payload }) => {
-        // state.posts = [payload.post, ...state.posts];
-        state.loading = true;
-      })
-      .addCase(postsOperations.addPost.rejected, (state, { payload }) => {
-        // state.posts = [payload.post, ...state.posts];
-        state.loading = false;
-      });
+      .addMatcher(
+        (action) => action.type.endsWith("post/pending"),
+        setPendingState
+      );
   },
 });
 
