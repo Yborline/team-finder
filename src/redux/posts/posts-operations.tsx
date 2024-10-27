@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import api from "@api/api";
 import { notify } from "@components/widgets/Tostify/Tostify";
 import { IFormCreatePost } from "@interfaces/form";
+import i18next from "i18next";
 
 const getPosts = createAsyncThunk(
   "list/post",
@@ -19,7 +20,8 @@ const addPost = createAsyncThunk(
   async (credentials: IFormCreatePost, thunkAPI) => {
     try {
       const { data } = await api.post(`post/add`, credentials);
-      notify("success", "Ваш пост відправлено");
+      notify("success", i18next.t("createPost.postSuccess"));
+      // notify("success", "Ваш пост відправлено");
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

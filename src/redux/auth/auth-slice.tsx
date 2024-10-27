@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import authOperations from "./auth-operations";
 import { IErrorResponse } from "@interfaces/slicer";
 import { IInitialStateAuth, ISuccesToken } from "@interfaces/redux";
+import i18next from "i18next";
 
 const user = {
   name: null,
@@ -61,7 +62,8 @@ const authSlice = createSlice({
 
       .addCase(authOperations.register.fulfilled, (state, { payload }) => {
         setUserAndToken(state, payload);
-        state.notify = "Ви успішно зареєструвалися";
+
+        state.notify = i18next.t("auth.successRegister");
       })
       .addCase(authOperations.logIn.fulfilled, (state, { payload }) => {
         state.user = payload.data.user;

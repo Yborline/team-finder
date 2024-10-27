@@ -11,7 +11,8 @@
         "uniqName": "Unique name",
         "password": "Password",
         "email": "Email",
-        "PasswordConfirmation": "Password confirmation"
+        "PasswordConfirmation": "Password confirmation",
+        "successRegister": "You have successfully registered"
     },
     "listTeam": {
         "filter": {
@@ -47,6 +48,7 @@
         "tagsSearch": "Enter tags to search",
         "addedTags": "Your added tags",
         "send": "Send",
-        "maxTagsError": "Maximum number of tags - {{count}} piece"
+        "maxTagsError": "Maximum number of tags - {{count}} piece",
+        "postSuccess": "Ваш пост відправлено"
     }
 }

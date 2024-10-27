@@ -10,9 +10,9 @@
     "auth": {
         "uniqName": "Унікальне ім'я",
         "password": "Пароль",
-        "login": "Увійти",
         "email": "Електронна адреса",
-        "PasswordConfirmation": "Підтвердження паролю"
+        "PasswordConfirmation": "Підтвердження паролю",
+        "successRegister": "Ви успішно зареєструвалися"
     },
     "listTeam": {
         "filter": {
