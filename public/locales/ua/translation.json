@@ -37,5 +37,17 @@
             }
         }
     },
-    "createPost": {}
+    "createPost": {
+        "title": "Заголовок",
+        "game": "Гра",
+        "yourMassage": "Ваше повідомлення",
+        "playerSearch": "Пошук гравця",
+        "teamSearch": "Пошук команди",
+        "nicknameTelegram": "Ваш нікнейм в телеграмі",
+        "discordLink": "Ваша посилання на діскорд",
+        "tagsSearch": "Введіть теги для пошуку",
+        "addedTags": "Ваші додані теги",
+        "send": "Відправити",
+        "maxTagsError": "Максимальна кількість тегів - {{count}} шт"
+    }
 }

@@ -16,6 +16,7 @@ import imgDiscord from "@assets/img/auth/discord.png";
 import imgTelegram from "@assets/img/socials/telegram.png";
 import { useAppDispatch } from "@interfaces/redux";
 import postsOperations from "@redux/posts/posts-operations";
+import { useTranslation } from "react-i18next";
 
 const maxTegs = 10;
 
@@ -23,6 +24,7 @@ const CreatePost = () => {
   const [tags, setTags] = useState<string[]>([]);
   const [inputCurrent, setInputCurrent] = useState<SocialKeys | "">("");
   const dispatch = useAppDispatch();
+  const { t } = useTranslation();
   const {
     register,
     handleSubmit,
@@ -52,7 +54,7 @@ const CreatePost = () => {
 
   const handlehandleSaveTags = (value: string) => {
     if (tags.length >= maxTegs) {
-      notify("error", `Максимальна кількість тегів - ${maxTegs}шт`);
+      notify("error", t("createPost.maxTagsError", { count: maxTegs }));
       return;
     }
     setTags((prevState) => [...prevState, value]);
@@ -78,18 +80,18 @@ const CreatePost = () => {
     >
       <InputModal
         classN={"transparent"}
-        text="Заголовок"
+        text={t("createPost.title")}
         hookForm={register("title")}
       />
       <ErrorText error={errors.title} />
       <InputModal
         classN={"transparent"}
-        text="Гра"
+        text={t("createPost.game")}
         hookForm={register("game")}
       />
       <ErrorText error={errors.game} />
       <TextArea
-        placeholder={"Ваше повідомлення"}
+        placeholder={t("createPost.yourMassage")}
         hookForm={register("comment")}
       />
       <ErrorText error={errors.comment} />
@@ -97,12 +99,12 @@ const CreatePost = () => {
         <Radio
           value="lookingForPlayers"
           hookForm={register("type")}
-          text="Пошук гравця"
+          text={t("createPost.playerSearch")}
         />{" "}
         <Radio
           value="lookingForGroup"
           hookForm={register("type")}
-          text="Пошук команди"
+          text={t("createPost.teamSearch")}
         />{" "}
       </div>
       <ErrorText error={errors.type} />
@@ -123,7 +125,7 @@ const CreatePost = () => {
           <InputModal
             // onChange={handleInputChange}
             classN={"transparent"}
-            text="Ваш нікнейм в телеграмі"
+            text={t("createPost.nicknameTelegram")}
             hookForm={register("socials.telegram")}
           />
           {/* <ErrorText error={errors.socials?.telegram} /> */}
@@ -134,7 +136,7 @@ const CreatePost = () => {
           <InputModal
             // onChange={handleInputChange}
             classN={"transparent"}
-            text="Ваш ID Discord"
+            text={t("createPost.discordLink")}
             hookForm={register("socials.discord")}
             type="text"
           />
@@ -151,16 +153,16 @@ const CreatePost = () => {
       } */}
       <InputForTags
         classN={"transparent"}
-        placeholder="Введіть теги для пошуку"
+        placeholder={t("createPost.tagsSearch")}
         handleSaveWord={handlehandleSaveTags}
       />
       {tags.length > 0 && (
         <>
-          <p className={styles.descTags}>Ваші додані теги:</p>
+          <p className={styles.descTags}>{t("createPost.addedTags")}:</p>
           <p className={styles.listTags}>{tags.join(", ")}</p>
         </>
       )}
-      <AnimatedButton type="submit" text="Відправити" />
+      <AnimatedButton type="submit" text={t("createPost.send")} />
     </form>
   );
 };

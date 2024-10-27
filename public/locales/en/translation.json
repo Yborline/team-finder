@@ -36,5 +36,17 @@
             }
         }
     },
-    "createPost": {}
+    "createPost": {
+        "title": "Title",
+        "game": "Game",
+        "yourMassage": "Your massage",
+        "playerSearch": "Player search",
+        "teamSearch": "Team search",
+        "nicknameTelegram": "Your nickname in Telegram",
+        "discordLink": "Your discord link",
+        "tagsSearch": "Enter tags to search",
+        "addedTags": "Your added tags",
+        "send": "Send",
+        "maxTagsError": "Maximum number of tags - {{count}} piece"
+    }
 }
