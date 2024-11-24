@@ -1,4 +1,4 @@
-import React, { FC, ReactNode } from "react";
+import { FC, ReactNode } from "react";
 import styles from "./ModalBackdropAuth.module.scss";
 import { IconContext } from "react-icons";
 import { IoCloseSharp } from "react-icons/io5";

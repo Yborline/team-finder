@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import styles from "./AnimatedButton.module.scss";
 import { typeB } from "@interfaces/button";
 

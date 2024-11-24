@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import styles from "./ButtonStandart.module.scss";
 
 interface IButtonStandart {

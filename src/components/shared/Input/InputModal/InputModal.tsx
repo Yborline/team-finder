@@ -21,7 +21,6 @@ export const InputModal: FC<IPropsInputModal> = ({
   type = "string",
   classN = null,
   value,
-  onChange,
 }) => {
   const [passwordType, setPasswordType] = useState(true);
 

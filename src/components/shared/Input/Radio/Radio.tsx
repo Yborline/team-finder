@@ -1,5 +1,5 @@
-import React, { FC, useState } from "react";
-import { UseFormRegister, UseFormRegisterReturn } from "react-hook-form";
+import { FC } from "react";
+import { UseFormRegisterReturn } from "react-hook-form";
 import styles from "./Radio.module.scss";
 
 interface IRadio {

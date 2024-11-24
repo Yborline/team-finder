@@ -1,5 +1,4 @@
 import { toast, Flip } from "react-toastify";
-import styles from "./Tostify.module.scss";
 type typeN = "success" | "error" | "info";
 
 export const notify = (typeN: typeN = "success", text: string) => {

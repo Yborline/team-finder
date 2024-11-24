@@ -5,7 +5,7 @@ import google from "@assets/img/auth/google.png";
 import styles from "./Google.module.scss";
 import operationsAuth from "@redux/auth/auth-operations";
 import { AppDispatch, useAppDispatch } from "@interfaces/redux";
-import { CredentialResponse, useGoogleLogin } from "@react-oauth/google";
+import { useGoogleLogin } from "@react-oauth/google";
 
 const Google: FC<ButtonDiscordGoogle> = ({ text }) => {
   const dispatch = useAppDispatch<AppDispatch>();

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./UserPage.module.scss";
 import { useAppDispatch } from "@interfaces/redux";
 import operationsAuth from "@redux/auth/auth-operations";
@@ -16,7 +16,7 @@ const objNew = {
 };
 
 const UserPage = () => {
-  const { id, name, email, telegramLink, discordUsername } = objNew;
+  const { name, email, telegramLink, discordUsername } = objNew;
   const [showChange, setShowChange] = useState(false);
   const user = useSelector(getUser);
   const dispatch = useAppDispatch();

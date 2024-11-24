@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./Create.module.scss";
 import CreatePost from "@components/widgets/Form/CreatePost/CreatePost";
 

@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import styles from "./FilterForm.module.scss";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAppDispatch } from "@interfaces/redux";

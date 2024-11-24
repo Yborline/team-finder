@@ -17,7 +17,6 @@ const UserForm: FC<IPropsUserForm> = ({ user, onSubmit }) => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schemaUser),

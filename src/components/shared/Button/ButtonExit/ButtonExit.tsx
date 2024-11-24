@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { IconContext } from "react-icons";
 import { ImExit } from "react-icons/im";
 import styles from "./ButtonExit.module.scss";
