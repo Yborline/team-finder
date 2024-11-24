@@ -1,24 +1,24 @@
 import { FC } from "react";
 import styles from "./ListPlayers.module.scss";
-import { useLocation, useNavigate } from "react-router-dom";
+// import { useLocation, useNavigate } from "react-router-dom";
 import imgDiscord from "@assets/img/auth/discord.png";
 import imgTelegram from "@assets/img/socials/telegram.png";
 import { Post } from "@interfaces/posts";
 
 const ListPlayers: FC<{ list: Post[] }> = ({ list }) => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const redirectToPlayerPage = (id: string) => {
-    const currentPath = location.pathname;
-    navigate(`${currentPath}/${id}`);
-  };
+  // const location = useLocation();
+  // const navigate = useNavigate();
+  // const redirectToPlayerPage = (id: number) => {
+  //   const currentPath = location.pathname;
+  //   navigate(`${currentPath}/${id}`);
+  // };
 
   const handleRedirectDiscord = (
     event: React.MouseEvent<HTMLImageElement, MouseEvent>,
     value: string
   ) => {
     event.stopPropagation();
-    if (value) handleRedirect(`https://discordapp.com/users/${value}`);
+    if (value) handleRedirect(`${value}`);
   };
 
   const handleRedirectTelegram = (
@@ -37,7 +37,7 @@ const ListPlayers: FC<{ list: Post[] }> = ({ list }) => {
     <ul className={styles.listPlayers}>
       {list.map(({ name, tags, type, game, id, text, socials }) => (
         <li
-          onClick={() => redirectToPlayerPage(id)}
+          // onClick={() => redirectToPlayerPage(id)}
           className={styles.boxPlayer}
           key={id}
         >

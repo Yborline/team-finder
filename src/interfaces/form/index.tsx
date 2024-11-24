@@ -15,7 +15,7 @@ export interface ButtonOtherAuth {
 }
 
 export interface ButtonDiscordGoogle {
-  onClick: () => void;
+  // onClick: () => void;
   text: string;
 }
 
