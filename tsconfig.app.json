@@ -29,7 +29,8 @@
     "@interfaces/*":["interfaces/*"],
     "@validations/*":["validations/*"],
     "@redux/*":["redux/*"],
-    "@api/*":["api/*"]
+    "@api/*":["api/*"],
+    "@utils/*":["utils/*"]
   
     }
   },
