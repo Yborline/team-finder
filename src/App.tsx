@@ -1,10 +1,9 @@
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router/router";
-import { Suspense } from "react";
+
 import store from "@redux/store";
 import { Provider } from "react-redux";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import LoaderPage from "@pages/LoaderPage/LoaderPage";
 
 // import { useTranslation } from "react-i18next";
 

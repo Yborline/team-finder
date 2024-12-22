@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Home.module.scss";
 import line from "@assets/img/home/line.png";
 import meepoMob from "@assets/img/home/leftView/leftPersons/meepo/meepoMob.png";
