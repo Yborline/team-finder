@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import styles from "./Home.module.scss";
 import line from "@assets/img/home/line.png";
 import meepoMob from "@assets/img/home/leftView/leftPersons/meepo/meepoMob.png";
@@ -18,13 +19,33 @@ import { getLoggedIn } from "@redux/auth/auth-selector";
 import { AppDispatch, useAppDispatch } from "@interfaces/redux";
 import { setModal } from "@redux/modal/modal-slice";
 import { useTranslation } from "react-i18next";
+import { preloadImages } from "@utils/preloadImages";
+import LoaderPage from "@pages/LoaderPage/LoaderPage";
 
-export const Home = () => {
+const imageUrls = [
+  meepoMob,
+  meepo,
+  meepo3k,
+  gtaMob,
+  gta,
+  gta3k,
+  stalkerMob,
+  stalker,
+  stalker3k,
+  WukongMob,
+  Wukong,
+  Wukong3k,
+];
+
+const Home = () => {
+  const { t } = useTranslation();
   const isLoggedIn = useSelector(getLoggedIn);
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useAppDispatch<AppDispatch>();
-  const { t } = useTranslation();
+
+  const [loading, setLoading] = useState(true);
+
   const handleClickCreate = () => {
     const currentPath = location.pathname;
 
@@ -35,64 +56,57 @@ export const Home = () => {
     }
   };
 
+  useEffect(() => {
+    preloadImages(imageUrls)
+      .then(() => setLoading(false))
+      .catch((error: any) => {
+        console.error(error);
+        setLoading(false);
+      });
+  }, []);
+
   return (
-    <div className={styles.mainHome}>
-      <Link to={"/team"} className={styles.leftView}>
-        <img
-          src={meepoMob}
-          srcSet={`
-              ${meepoMob} 1020w,
-              ${meepo} 1920w,
-              ${meepo3k} 4000w,
-          `}
-          className={styles.meepo}
-          alt="meepo"
-        />
-        <p className={`${styles.textLeft} ${styles.textSelect}`}>
-          {t("home.teamSearch")}
-        </p>
-        <img
-          src={gtaMob}
-          srcSet={`
-              ${gtaMob} 1020w,
-              ${gta} 1920w,
-              ${gta3k} 4000w,
-          `}
-          className={styles.gta}
-          alt="gta"
-        />
-        {/* <img className={styles.gta} alt="gta" /> */}
-      </Link>
-      <img className={styles.line} src={line} alt="line" />
-      <button
-        // to={"/create"}
-        onClick={handleClickCreate}
-        className={styles.rightView}
-      >
-        <img
-          src={stalkerMob}
-          srcSet={`
-              ${stalkerMob} 1020w,
-              ${stalker} 1920w,
-              ${stalker3k} 4000w,
-          `}
-          className={styles.stalker}
-          alt="stalker"
-        />
-        <p className={`${styles.textRight} ${styles.textSelect}`}>
-          {t("home.createAPost")}
-        </p>
-        <img
-          src={WukongMob}
-          srcSet={`
-              ${WukongMob} 1020w,
-              ${Wukong} 1920w,
-              ${Wukong3k} 4000w,
-          `}
-          className={styles.wukongMob}
-          alt="Wukong"
-        />
-      </button>
-    </div>
+    <>
+      {loading && <LoaderPage />}
+      <div className={styles.mainHome}>
+        <Link to={"/team"} className={styles.leftView}>
+          <img
+            src={meepoMob}
+            srcSet={`${meepoMob} 1020w, ${meepo} 1920w, ${meepo3k} 4000w`}
+            className={styles.meepo}
+            alt="meepo"
+          />
+          <p className={`${styles.textLeft} ${styles.textSelect}`}>
+            {t("home.teamSearch")}
+          </p>
+          <img
+            src={gtaMob}
+            srcSet={`${gtaMob} 1020w, ${gta} 1920w, ${gta3k} 4000w`}
+            className={styles.gta}
+            alt="gta"
+          />
+        </Link>
+        <img className={styles.line} src={line} alt="line" />
+        <button onClick={handleClickCreate} className={styles.rightView}>
+          <img
+            src={stalkerMob}
+            srcSet={`${stalkerMob} 1020w, ${stalker} 1920w, ${stalker3k} 4000w`}
+            className={styles.stalker}
+            alt="stalker"
+          />
+          <p className={`${styles.textRight} ${styles.textSelect}`}>
+            {t("home.createAPost")}
+          </p>
+          <img
+            src={WukongMob}
+            srcSet={`${WukongMob} 1020w, ${Wukong} 1920w, ${Wukong3k} 4000w`}
+            className={styles.wukongMob}
+            alt="Wukong"
+          />
+        </button>
+      </div>
+    </>
   );
 };
+
+export default Home;
