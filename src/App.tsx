@@ -16,9 +16,9 @@ function App() {
   return (
     <Provider store={store}>
       <GoogleOAuthProvider clientId={googleId}>
-        <Suspense fallback={<LoaderPage />}>
-          <RouterProvider router={router} />
-        </Suspense>
+        {/* <Suspense fallback={<LoaderPage />}> */}
+        <RouterProvider router={router} />
+        {/* </Suspense> */}
       </GoogleOAuthProvider>
     </Provider>
   );
