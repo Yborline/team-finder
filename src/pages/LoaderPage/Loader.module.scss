@@ -1,6 +1,9 @@
 .boxLoaderPage {
+    position: absolute;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     background: var(--team-background);
     display: flex;
+    flex: 1;
+    z-index: 10;
 }
