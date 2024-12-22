@@ -19,11 +19,11 @@ import { ModalType } from "@interfaces/modal/intex";
 import "react-toastify/dist/ReactToastify.css";
 import operationsAuth from "@redux/auth/auth-operations";
 import ButtonExit from "@components/shared/Button/ButtonExit/ButtonExit";
-import { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { notify } from "../Tostify/Tostify";
 // import ThemeToggle from "@components/shared/ThemeToggle/ThemeToggle";
 
-export const Header = () => {
+const Header = () => {
   const modal = useSelector(getModal);
   const loggedIn = useSelector(getLoggedIn);
   const errorUser = useSelector(getErrorUser);
@@ -44,6 +44,10 @@ export const Header = () => {
     dispatch(setModal(value));
   };
 
+  const handleLogout = useCallback(() => {
+    dispatch(operationsAuth.logOut());
+  }, [dispatch]);
+
   return (
     <header className={styles.header}>
       <div className={styles.mainBox}>
@@ -56,7 +60,7 @@ export const Header = () => {
         {loggedIn ? (
           <div className={styles.boxUser}>
             <ButtonUser />
-            <ButtonExit onClick={() => dispatch(operationsAuth.logOut())} />
+            <ButtonExit onClick={handleLogout} />
           </div>
         ) : (
           <div className={styles.boxRight}>
@@ -89,3 +93,6 @@ export const Header = () => {
     </header>
   );
 };
+
+const HeaderMemo = React.memo(Header);
+export default HeaderMemo;
