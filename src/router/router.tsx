@@ -1,11 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Layout } from "../layout/Layout";
-import { Home } from "../pages/Home/Home";
-import TeamList from "@pages/TeamList/TeamList";
-import Post from "@pages/TeamList/Post/Post";
-import Create from "@pages/Create/Create";
+import Layout from "../layout/Layout";
+
+// import Post from "@pages/TeamList/Post/Post";
+
 import PrivateRoute from "./PrivateRoute";
-import UserPage from "@pages/UserPage/UserPage";
+
+import { lazyLoadRoutes } from "./LazyLoadRoutes";
 
 export const router = createBrowserRouter([
   {
@@ -14,31 +14,20 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: lazyLoadRoutes("Home"),
       },
       {
         path: "/team",
-        element: <TeamList />,
+        element: lazyLoadRoutes("TeamList"),
       },
-      {
-        path: "/team/:id",
-        element: <Post />, // Отдельная страница Post, но с общим родителем по пути
-      },
+
       {
         path: "/create",
-        element: (
-          <PrivateRoute>
-            <Create />
-          </PrivateRoute>
-        ),
+        element: <PrivateRoute>{lazyLoadRoutes("Create")}</PrivateRoute>,
       },
       {
         path: "/user",
-        element: (
-          <PrivateRoute>
-            <UserPage />
-          </PrivateRoute>
-        ),
+        element: <PrivateRoute>{lazyLoadRoutes("UserPage")}</PrivateRoute>,
       },
     ],
   },
