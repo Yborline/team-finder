@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import React, { FC, useEffect } from "react";
 import { createPortal } from "react-dom";
 import styles from "./Modal.module.scss";
 import { motion } from "framer-motion";
@@ -10,7 +10,7 @@ interface IModalProps {
 
 const modalRoot = document.getElementById("modal-root") as HTMLDivElement;
 
-const Modal: FC<IModalProps> = ({ close, children }) => {
+const Modal: FC<IModalProps> = React.memo(({ close, children }) => {
   const handleKeyDown = (e: KeyboardEvent) => {
     if (e.code === "Escape") {
       close();
@@ -49,6 +49,6 @@ const Modal: FC<IModalProps> = ({ close, children }) => {
     </motion.div>,
     modalRoot
   );
-};
+});
 
 export default Modal;
