@@ -4,7 +4,7 @@ import styles from "./Post.module.scss";
 // import { AppDispatch, useAppDispatch } from "@interfaces/redux";
 // import postsOperations from "@redux/posts/posts-operations";
 
-const Post = () => {
+const Post: React.FC = () => {
   const { id } = useParams();
   // const dispatch = useAppDispatch<AppDispatch>();
 

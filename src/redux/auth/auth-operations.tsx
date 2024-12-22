@@ -68,6 +68,7 @@ const logInG = createAsyncThunk(
       token.setRefreshToken(data.refresh_token);
       return data;
     } catch (error) {
+      console.log(error);
       if (axios.isAxiosError(error)) {
         if (error.response) {
           return rejectWithValue(error.response.data.message || "Server error");
@@ -114,6 +115,7 @@ const fetchCurrentUser = createAsyncThunk(
       console.log(data);
       return data;
     } catch (error) {
+      console.log(error);
       if (error instanceof AxiosError && error.response?.status === 401) {
         const tokenRefresh = document.cookie
           .split("; ")
